@@ -44,7 +44,7 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
             </div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight animate-slideInLeft">
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-emerald-950 leading-tight animate-slideInLeft">
               Platform Pemindai Presisi{' '}
               <span className="bg-gradient-to-r from-[#1e6238] via-[#70bc2c] to-[#ba2c67] bg-clip-text text-transparent">
                 GENT-Vision
@@ -52,10 +52,10 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
             </h1>
 
             {/* Description */}
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed animate-fadeInUp">
+            <p className="text-emerald-800 text-sm sm:text-base leading-relaxed animate-fadeInUp">
               Solusi digital presisi untuk membaca spektrum warna stiker indikator kesegaran daging GENT 
               (kurkumin-DES). Dilengkapi sistem{' '}
-              <strong className="text-slate-800">Kalibrasi Titik Putih</strong> otomatis untuk hasil akurat 
+              <strong className="text-emerald-950">Kalibrasi Titik Putih</strong> otomatis untuk hasil akurat 
               di semua kamera dan kondisi pencahayaan.
             </p>
 
@@ -82,7 +82,7 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
                 <span>Buka Pemindai Stiker GENT</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
-              <p className="mt-2.5 text-[11px] text-slate-500 flex items-center gap-1.5">
+              <p className="mt-2.5 text-[11px] text-emerald-700/80 flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#70bc2c]" />
                 Scroll otomatis ke hasil analisis setelah pemindaian
               </p>
@@ -101,8 +101,8 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
               <div className="relative bg-white rounded-3xl p-3 sm:p-4 border border-[#c4cb38]/40 shadow-2xl animate-float">
                 
                 {/* Card header */}
-                <div className="flex items-center justify-between mb-3 border-b border-slate-100 pb-2.5 px-1">
-                  <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                <div className="flex items-center justify-between mb-3 border-b border-emerald-50 pb-2.5 px-1">
+                  <span className="text-xs font-bold text-emerald-950 flex items-center gap-1.5">
                     <ShieldCheck className="w-4 h-4 text-[#70bc2c]" />
                     Kemasan Pintar GENT
                   </span>
@@ -112,7 +112,7 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
                 </div>
 
                 {/* Product image */}
-                <div className="rounded-2xl overflow-hidden bg-[#faf9ea] border border-slate-200 shadow-inner">
+                <div className="rounded-2xl overflow-hidden bg-[#faf9ea] border border-emerald-100 shadow-inner">
                   <img 
                     src={`${import.meta.env.BASE_URL}assets/gent-packaging-ref.png`}
                     alt="Produk Kemasan Pintar GENT — Stiker Indikator Kesegaran Daging" 
@@ -127,7 +127,7 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
 
                 {/* Caption */}
                 <div className="mt-3 px-1">
-                  <p className="text-center text-xs text-slate-500 font-medium">
+                  <p className="text-center text-xs text-emerald-700/80 font-medium">
                     Stiker indikator kolorimetri GENT pada kemasan daging sapi &amp; ayam
                   </p>
                   {/* Color legend */}
@@ -139,7 +139,7 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
                     ].map(({ hex, label }) => (
                       <div key={label} className="flex items-center gap-1">
                         <div className="w-3 h-3 rounded-full border border-white shadow-sm" style={{ backgroundColor: hex }} />
-                        <span className="text-[10px] text-slate-500 font-medium">{label}</span>
+                        <span className="text-[10px] text-emerald-700/80 font-medium">{label}</span>
                       </div>
                     ))}
                   </div>

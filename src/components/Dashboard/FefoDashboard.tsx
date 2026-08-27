@@ -123,10 +123,10 @@ export const FefoDashboard: React.FC = () => {
             <Package className="w-3.5 h-3.5" />
             <span>Fitur Utama B: Dynamic Shelf-Life Dashboard (FEFO)</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-emerald-950">
             Manajemen Stok & Rotasi FEFO Cerdas
           </h2>
-          <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-2xl">
+          <p className="text-emerald-600/70 text-xs sm:text-sm mt-1 max-w-2xl">
             Sistem B2B untuk Rumah Potong Hewan (RPH), Distributor & Ritel. Mengatur prioritas penjualan (*First-Expired, First-Out*) berbasis data sensor kolorimetri kurkumin-DES & telemetri suhu IoT.
           </p>
         </div>
@@ -135,7 +135,7 @@ export const FefoDashboard: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={handleExportCSV}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold border border-[#c4cb38]/30 transition-all cursor-pointer shadow-md"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-emerald-50 text-emerald-900 text-xs font-bold border border-[#c4cb38]/30 transition-all cursor-pointer shadow-md"
           >
             <Download className="w-4 h-4 text-[#1e6238]" />
             <span>Ekspor CSV</span>
@@ -145,19 +145,19 @@ export const FefoDashboard: React.FC = () => {
 
       {/* RECALL WARNING BANNER (If Spoiled Batch Detected) */}
       {spoiledBatches.length > 0 && (
-        <div className="p-4 sm:p-5 rounded-2xl bg-red-950/80 border-2 border-red-500 text-slate-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xl shadow-red-950/60 animate-pulse">
+        <div className="p-4 sm:p-5 rounded-2xl bg-red-950/80 border-2 border-red-500 text-red-50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-2xl shadow-red-950/60 animate-pulse">
           <div className="flex items-center gap-3">
-            <ShieldAlert className="w-8 h-8 text-red-600 flex-shrink-0" />
+            <ShieldAlert className="w-8 h-8 text-red-500 flex-shrink-0" />
             <div>
-              <h3 className="font-extrabold text-base text-red-200">
+              <h3 className="font-extrabold text-base text-white">
                 PERINGATAN RECALL: {spoiledBatches.length} Batch Daging Berstatus Rusak Terdeteksi!
               </h3>
-              <p className="text-xs text-red-600 mt-0.5">
+              <p className="text-xs text-red-200 mt-0.5">
                 Stiker GENT menunjukkan warna merah kecokelatan (TVB-N &gt; 25 mg/100g). Segera tarik dari rak display untuk mencegah keracunan konsumen.
               </p>
             </div>
           </div>
-          <span className="px-4 py-2 rounded-xl bg-red-600 font-bold text-xs shadow-lg uppercase tracking-wider">
+          <span className="px-4 py-2 rounded-xl bg-red-600 font-bold text-xs text-white shadow-lg uppercase tracking-wider">
             Tindakan Karantina Aktif
           </span>
         </div>
@@ -167,10 +167,10 @@ export const FefoDashboard: React.FC = () => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         
         <div className="p-4 rounded-2xl bg-white border border-[#c4cb38]/40 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">Total Stok Aktif</span>
+          <span className="text-xs text-emerald-600/70 font-medium">Total Stok Aktif</span>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">{totalUnits}</span>
-            <span className="text-xs text-slate-400">Unit ({batches.length} Batch)</span>
+            <span className="text-2xl sm:text-3xl font-black text-emerald-950 font-mono">{totalUnits}</span>
+            <span className="text-xs text-emerald-600/70">Unit ({batches.length} Batch)</span>
           </div>
           <span className="text-[10px] text-[#1e6238] font-semibold block">
             {freshBatches.length} Batch Segar Optimal
@@ -178,12 +178,12 @@ export const FefoDashboard: React.FC = () => {
         </div>
 
         <div className="p-4 rounded-2xl bg-white border border-[#c4cb38]/40 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">Rotasi FEFO Prioritas (Jingga)</span>
+          <span className="text-xs text-emerald-600/70 font-medium">Rotasi FEFO Prioritas (Jingga)</span>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl sm:text-3xl font-black text-orange-600 font-mono">
               {warningBatches.length}
             </span>
-            <span className="text-xs text-slate-400">Batch</span>
+            <span className="text-xs text-emerald-600/70">Batch</span>
           </div>
           <span className="text-[10px] text-orange-600 font-semibold block">
             Rekomendasi Mark-down 20-40%
@@ -191,12 +191,12 @@ export const FefoDashboard: React.FC = () => {
         </div>
 
         <div className="p-4 rounded-2xl bg-white border border-[#c4cb38]/40 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">Batch Rusak (Merah)</span>
+          <span className="text-xs text-emerald-600/70 font-medium">Batch Rusak (Merah)</span>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl sm:text-3xl font-black text-red-500 font-mono">
               {spoiledBatches.length}
             </span>
-            <span className="text-xs text-slate-400">Batch</span>
+            <span className="text-xs text-emerald-600/70">Batch</span>
           </div>
           <span className="text-[10px] text-red-600 font-semibold block">
             {spoiledBatches.length > 0 ? 'Wajib Recall Segera' : 'Nol Kontaminasi'}
@@ -204,12 +204,12 @@ export const FefoDashboard: React.FC = () => {
         </div>
 
         <div className="p-4 rounded-2xl bg-white border border-[#c4cb38]/40 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">Pencegahan Food Loss</span>
+          <span className="text-xs text-emerald-600/70 font-medium">Pencegahan Food Loss</span>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl sm:text-3xl font-black text-[#1e6238] font-mono">92.4%</span>
-            <span className="text-xs text-slate-400">Terselamatkan</span>
+            <span className="text-xs text-emerald-600/70">Terselamatkan</span>
           </div>
-          <span className="text-[10px] text-slate-400 block">
+          <span className="text-[10px] text-emerald-600/70 block">
             Efisiensi Penjualan FEFO Dinamis
           </span>
         </div>
@@ -223,21 +223,21 @@ export const FefoDashboard: React.FC = () => {
             <Thermometer className="w-5 h-5" />
           </div>
           <div>
-            <span className="font-bold text-slate-900 block">Uji Simulasi Fluktuasi Suhu Chiller IoT</span>
-            <span className="text-slate-400">Lihat bagaimana perubahan suhu ruangan secara otomatis mengubah skor FEFO & rotasi stok</span>
+            <span className="font-bold text-emerald-950 block">Uji Simulasi Fluktuasi Suhu Chiller IoT</span>
+            <span className="text-emerald-600/70">Lihat bagaimana perubahan suhu ruangan secara otomatis mengubah skor FEFO & rotasi stok</span>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={() => handleSimulateChillerTempChange(-1)}
-            className="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-cyan-700 font-bold border border-[#c4cb38]/30"
+            className="px-3 py-1.5 rounded-lg bg-white hover:bg-emerald-50 text-cyan-700 font-bold border border-[#c4cb38]/30"
           >
             ❄ -1.0°C (Lebih Dingin)
           </button>
           <button
             onClick={() => handleSimulateChillerTempChange(1.5)}
-            className="px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-orange-600 font-bold border border-[#c4cb38]/30"
+            className="px-3 py-1.5 rounded-lg bg-white hover:bg-emerald-50 text-orange-600 font-bold border border-[#c4cb38]/30"
           >
             🔥 +1.5°C (Simulasi Panas)
           </button>
@@ -247,25 +247,25 @@ export const FefoDashboard: React.FC = () => {
       {/* Filter and Search Bar */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-emerald-600/70 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Cari Batch ID, Produk, Chiller..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-[#faf9ea] text-slate-900 rounded-xl border border-[#c4cb38]/40 focus:outline-none focus:border-[#70bc2c] text-xs"
+            className="w-full pl-9 pr-4 py-2 bg-[#faf9ea] text-emerald-950 rounded-xl border border-[#c4cb38]/40 focus:outline-none focus:border-[#70bc2c] text-xs"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <Filter className="w-4 h-4 text-slate-400 shrink-0" />
+          <Filter className="w-4 h-4 text-emerald-600/70 shrink-0" />
           <div className="flex bg-white p-1 rounded-xl border border-[#c4cb38]/30 text-xs gap-0.5 overflow-x-auto tab-scroll">
             <button
               onClick={() => setFilterStatus('all')}
               className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap font-semibold ${
                 filterStatus === 'all'
-                  ? 'bg-slate-200 text-slate-900 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-700'
+                  ? 'bg-[#f0efc0]/40 text-emerald-950 shadow-sm'
+                  : 'text-emerald-600/70 hover:text-emerald-900'
               }`}
             >
               Semua
@@ -274,8 +274,8 @@ export const FefoDashboard: React.FC = () => {
               onClick={() => setFilterStatus('fresh')}
               className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap font-semibold ${
                 filterStatus === 'fresh'
-                  ? 'bg-yellow-400 text-slate-900 shadow-sm'
-                  : 'text-slate-400 hover:text-yellow-600'
+                  ? 'bg-yellow-400 text-emerald-950 shadow-sm'
+                  : 'text-emerald-600/70 hover:text-yellow-600'
               }`}
             >
               Kuning (Segar)
@@ -284,8 +284,8 @@ export const FefoDashboard: React.FC = () => {
               onClick={() => setFilterStatus('warning')}
               className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap font-semibold ${
                 filterStatus === 'warning'
-                  ? 'bg-orange-500 text-slate-900 shadow-sm'
-                  : 'text-slate-400 hover:text-orange-600'
+                  ? 'bg-orange-500 text-emerald-950 shadow-sm'
+                  : 'text-emerald-600/70 hover:text-orange-600'
               }`}
             >
               Jingga (FEFO)
@@ -294,8 +294,8 @@ export const FefoDashboard: React.FC = () => {
               onClick={() => setFilterStatus('spoiled')}
               className={`px-3 py-1.5 rounded-lg transition-all whitespace-nowrap font-semibold ${
                 filterStatus === 'spoiled'
-                  ? 'bg-red-500 text-slate-900 shadow-sm'
-                  : 'text-slate-400 hover:text-red-600'
+                  ? 'bg-red-500 text-emerald-950 shadow-sm'
+                  : 'text-emerald-600/70 hover:text-red-600'
               }`}
             >
               Merah (Recall)
@@ -307,12 +307,12 @@ export const FefoDashboard: React.FC = () => {
       {/* Meat Batch Table */}
       <div className="rounded-3xl border border-[#c4cb38]/30 overflow-hidden shadow-2xl bg-white backdrop-blur">
         {/* Mobile scroll hint */}
-        <div className="sm:hidden flex items-center gap-1.5 px-4 py-2 border-b border-[#c4cb38]/30 bg-slate-50">
-          <span className="text-[10px] text-slate-400">← Geser kanan untuk lihat semua kolom →</span>
+        <div className="sm:hidden flex items-center gap-1.5 px-4 py-2 border-b border-[#c4cb38]/30 bg-white">
+          <span className="text-[10px] text-emerald-600/70">← Geser kanan untuk lihat semua kolom →</span>
         </div>
         <div className="table-scroll-mobile">
-          <table className="w-full min-w-[720px] text-left text-xs text-slate-600">
-            <thead className="bg-[#faf9ea] text-slate-400 uppercase text-[10px] tracking-wider border-b border-[#c4cb38]/40 font-mono">
+          <table className="w-full min-w-[720px] text-left text-xs text-emerald-800">
+            <thead className="bg-[#faf9ea] text-emerald-600/70 uppercase text-[10px] tracking-wider border-b border-[#c4cb38]/40 font-mono">
               <tr>
                 <th className="py-3.5 px-4">Prioritas FEFO</th>
                 <th className="py-3.5 px-4">Batch & Produk</th>
@@ -323,7 +323,7 @@ export const FefoDashboard: React.FC = () => {
                 <th className="py-3.5 px-4 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200">
+            <tbody className="divide-y divide-emerald-100">
               {filteredBatches.map((batch, index) => {
                 const statusBadge = {
                   fresh: 'bg-yellow-500/20 text-yellow-600 border-yellow-500/40',
@@ -342,13 +342,13 @@ export const FefoDashboard: React.FC = () => {
                     <td className="py-4 px-4 font-mono">
                       <div className="flex items-center gap-2">
                         <span className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs ${
-                          index === 0 ? 'bg-red-500 text-slate-900' : index <= 2 ? 'bg-orange-500 text-slate-900' : 'bg-white text-slate-600'
+                          index === 0 ? 'bg-red-500 text-emerald-950' : index <= 2 ? 'bg-orange-500 text-emerald-950' : 'bg-white text-emerald-800'
                         }`}>
                           {index + 1}
                         </span>
                         <div>
-                          <span className="text-[10px] text-slate-400 block">Skor FEFO</span>
-                          <span className="font-bold text-slate-900">{batch.fefoPriorityScore}/100</span>
+                          <span className="text-[10px] text-emerald-600/70 block">Skor FEFO</span>
+                          <span className="font-bold text-emerald-950">{batch.fefoPriorityScore}/100</span>
                         </div>
                       </div>
                     </td>
@@ -357,8 +357,8 @@ export const FefoDashboard: React.FC = () => {
                     <td className="py-4 px-4">
                       <div>
                         <span className="font-mono text-[#1e6238] font-bold block">{batch.batchCode}</span>
-                        <span className="font-bold text-slate-900 text-sm block">{batch.productName}</span>
-                        <span className="text-[10px] text-slate-400">{batch.cutType} • {batch.currentStockUnits} Unit</span>
+                        <span className="font-bold text-emerald-950 text-sm block">{batch.productName}</span>
+                        <span className="text-[10px] text-emerald-600/70">{batch.cutType} • {batch.currentStockUnits} Unit</span>
                       </div>
                     </td>
 
@@ -373,7 +373,7 @@ export const FefoDashboard: React.FC = () => {
                           <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${statusBadge}`}>
                             {batch.status === 'fresh' ? 'SEGAR' : batch.status === 'warning' ? 'WASPADA' : 'RUSAK'}
                           </span>
-                          <span className="text-[10px] text-slate-400 block mt-0.5">
+                          <span className="text-[10px] text-emerald-600/70 block mt-0.5">
                             Indeks: {batch.freshnessIndex}%
                           </span>
                         </div>
@@ -382,19 +382,19 @@ export const FefoDashboard: React.FC = () => {
 
                     {/* Chemical params */}
                     <td className="py-4 px-4 font-mono">
-                      <div>pH: <span className="text-slate-900 font-bold">{batch.phValue}</span></div>
-                      <div>TVB-N: <span className="text-slate-900 font-bold">{batch.tvbnValue}</span> mg/100g</div>
+                      <div>pH: <span className="text-emerald-950 font-bold">{batch.phValue}</span></div>
+                      <div>TVB-N: <span className="text-emerald-950 font-bold">{batch.tvbnValue}</span> mg/100g</div>
                     </td>
 
                     {/* Chiller IoT Temp */}
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-1.5 font-mono">
                         <Thermometer className={`w-3.5 h-3.5 ${batch.currentTempCelsius > 4 ? 'text-red-600' : 'text-cyan-700'}`} />
-                        <span className={`font-bold ${batch.currentTempCelsius > 4 ? 'text-red-600' : 'text-slate-900'}`}>
+                        <span className={`font-bold ${batch.currentTempCelsius > 4 ? 'text-red-600' : 'text-emerald-950'}`}>
                           {batch.currentTempCelsius}°C
                         </span>
                       </div>
-                      <span className="text-[10px] text-slate-400 block">{batch.chillerId}</span>
+                      <span className="text-[10px] text-emerald-600/70 block">{batch.chillerId}</span>
                     </td>
 
                     {/* Pricing & Markdown */}
@@ -403,7 +403,7 @@ export const FefoDashboard: React.FC = () => {
                         <span className="text-red-600 font-bold text-xs">RECALL / TIDAK DIJUAL</span>
                       ) : (
                         <div>
-                          <div className="font-bold text-slate-900 text-sm">
+                          <div className="font-bold text-emerald-950 text-sm">
                             {formatIDR(batch.discountPercentage > 0 ? batch.currentPriceIdr : batch.standardPriceIdr)}
                           </div>
                           {batch.discountPercentage > 0 ? (
@@ -411,7 +411,7 @@ export const FefoDashboard: React.FC = () => {
                               <BadgePercent className="w-3 h-3" /> Diskon {batch.discountPercentage}%
                             </span>
                           ) : (
-                            <span className="text-[10px] text-slate-400">Harga Standar</span>
+                            <span className="text-[10px] text-emerald-600/70">Harga Standar</span>
                           )}
                         </div>
                       )}
@@ -423,7 +423,7 @@ export const FefoDashboard: React.FC = () => {
                         {batch.status === 'warning' && batch.discountPercentage === 0 && (
                           <button
                             onClick={() => handleApplyMarkdownDiscount(batch.id)}
-                            className="px-2.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-slate-900 font-bold text-[10px] transition-all"
+                            className="px-2.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-emerald-950 font-bold text-[10px] transition-all"
                             title="Aktifkan Diskon Kilat FEFO"
                           >
                             Set Diskon
@@ -432,7 +432,7 @@ export const FefoDashboard: React.FC = () => {
 
                         <button
                           onClick={() => setSelectedBatchForLabel(batch)}
-                          className="p-2 rounded-lg bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition-all"
+                          className="p-2 rounded-lg bg-white hover:bg-emerald-50 text-emerald-800 hover:text-emerald-950 transition-all"
                           title="Lihat / Cetak Label Pintar"
                         >
                           <QrCode className="w-4 h-4 text-[#1e6238]" />

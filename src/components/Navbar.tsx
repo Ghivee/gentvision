@@ -54,19 +54,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
             </div>
             <div className="hidden xs:block">
               <div className="flex items-center gap-1.5">
-                <span className="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900">
+                <span className="text-lg sm:text-xl font-extrabold tracking-tight text-emerald-950">
                   GENT<span className="text-[#1e6238]">-Vision</span>
                 </span>
                 <span className="hidden sm:inline text-[9px] px-1.5 py-0.5 rounded bg-[#f0efc0] text-[#1e6238] font-mono font-bold border border-[#c4cb38]/40">
                   Eco
                 </span>
               </div>
-              <span className="hidden sm:block text-[10px] text-slate-500 tracking-wider font-medium -mt-0.5">
+              <span className="hidden sm:block text-[10px] text-emerald-700/80 tracking-wider font-medium -mt-0.5">
                 Smart Meat Packaging Platform
               </span>
             </div>
             {/* Mobile brand text */}
-            <span className="xs:hidden text-lg font-extrabold text-slate-900">
+            <span className="xs:hidden text-lg font-extrabold text-emerald-950">
               GENT<span className="text-[#1e6238]">-Vision</span>
             </span>
           </button>
@@ -80,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
                   activeSection === id
                     ? 'bg-[#f0efc0]/80 text-[#1e6238] border border-[#c4cb38]/60 shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                    : 'text-emerald-800 hover:text-emerald-950 hover:bg-emerald-50'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
             {/* Hamburger — tablet/mobile */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all cursor-pointer"
+              className="lg:hidden p-2 rounded-xl border border-emerald-100 text-emerald-800 hover:bg-emerald-50 transition-all cursor-pointer"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
 
         {/* ─── Mobile Dropdown Menu ────────────────────────── */}
         {isMenuOpen && (
-          <div className="lg:hidden border-t border-slate-100 bg-white/98 backdrop-blur-xl animate-fadeInUp shadow-xl">
+          <div className="lg:hidden border-t border-emerald-50 bg-white/98 backdrop-blur-xl animate-fadeInUp shadow-xl">
             <nav className="max-w-7xl mx-auto px-4 py-3 grid grid-cols-2 gap-2">
               {NAV_LINKS.map(({ id, label, icon: Icon }) => (
                 <button
@@ -124,7 +124,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                   className={`flex items-center gap-2.5 px-4 py-3 rounded-2xl text-sm font-semibold transition-all cursor-pointer text-left ${
                     activeSection === id
                       ? 'bg-[#f0efc0] text-[#1e6238] border border-[#c4cb38]/60'
-                      : 'text-slate-700 bg-slate-50 hover:bg-slate-100 border border-transparent'
+                      : 'text-emerald-900 bg-white hover:bg-emerald-50 border border-transparent'
                   }`}
                 >
                   <Icon className="w-4 h-4 shrink-0" />
@@ -137,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
       </header>
 
       {/* ─── Bottom Navigation Bar (Mobile Only) ─────────────────── */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/97 backdrop-blur-xl border-t border-slate-200 shadow-2xl bottom-nav-safe">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/97 backdrop-blur-xl border-t border-emerald-100 shadow-2xl bottom-nav-safe">
         <div className="flex items-stretch justify-around px-1 pt-2 pb-2">
           {NAV_LINKS.map(({ id, short, icon: Icon }) => (
             <button
@@ -146,7 +146,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
               className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-xl transition-all cursor-pointer min-w-0 flex-1 ${
                 activeSection === id
                   ? 'text-[#1e6238]'
-                  : 'text-slate-400 hover:text-slate-600'
+                  : 'text-emerald-600/70 hover:text-emerald-800'
               }`}
             >
               <div className={`p-1.5 rounded-xl transition-all ${

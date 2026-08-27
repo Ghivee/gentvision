@@ -38,10 +38,10 @@ export const EcoTraceabilityHub: React.FC = () => {
           <Leaf className="w-3.5 h-3.5" />
           <span>Fitur Utama D: Eco-Traceability Hub & Biomassa Jerami Padi</span>
         </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
+        <h2 className="text-2xl sm:text-4xl font-extrabold text-emerald-950">
           Transparansi Rantai Dingin & Ekonomi Sirkular
         </h2>
-        <p className="max-w-2xl mx-auto text-slate-500 text-xs sm:text-sm">
+        <p className="max-w-2xl mx-auto text-emerald-700/80 text-xs sm:text-sm">
           Lacak rekam jejak suhu dari Rumah Potong Hewan (RPH) hingga rak ritel, serta hitung kontribusi pengurangan emisi dari pemanfaatan limbah jerami padi.
         </p>
       </div>
@@ -54,12 +54,12 @@ export const EcoTraceabilityHub: React.FC = () => {
             <Leaf className="w-4 h-4 text-[#1e6238]" /> Jerami Padi Diselamatkan
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
+            <span className="text-2xl sm:text-3xl font-black text-emerald-950 font-mono">
               {(INITIAL_ECO_METRICS.riceStrawSavedKg / 1000).toFixed(2)}
             </span>
             <span className="text-xs text-[#1e6238]">Ton Biomassa</span>
           </div>
-          <span className="text-[10px] text-slate-500 block">
+          <span className="text-[10px] text-emerald-700/80 block">
             Mencegah pembakaran jerami di sawah
           </span>
         </div>
@@ -69,12 +69,12 @@ export const EcoTraceabilityHub: React.FC = () => {
             <Sparkles className="w-4 h-4 text-teal-800" /> Emisi Karbon Dicegah
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
+            <span className="text-2xl sm:text-3xl font-black text-emerald-950 font-mono">
               {(INITIAL_ECO_METRICS.co2EmissionsPreventedKg / 1000).toFixed(2)}
             </span>
             <span className="text-xs text-teal-700">Ton CO2e</span>
           </div>
-          <span className="text-[10px] text-slate-500 block">
+          <span className="text-[10px] text-emerald-700/80 block">
             Substitusi plastik sintetik berbasis minyak bumi
           </span>
         </div>
@@ -84,12 +84,12 @@ export const EcoTraceabilityHub: React.FC = () => {
             <ShieldCheck className="w-4 h-4 text-cyan-700" /> Food Loss Terselamatkan
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
+            <span className="text-2xl sm:text-3xl font-black text-emerald-950 font-mono">
               {(INITIAL_ECO_METRICS.foodLossReducedKg / 1000).toFixed(2)}
             </span>
             <span className="text-xs text-cyan-700">Ton Daging</span>
           </div>
-          <span className="text-[10px] text-slate-500 block">
+          <span className="text-[10px] text-emerald-700/80 block">
             Melalui deteksi dini & rotasi stok FEFO
           </span>
         </div>
@@ -99,12 +99,12 @@ export const EcoTraceabilityHub: React.FC = () => {
             <Award className="w-4 h-4 text-indigo-800" /> Sensor GENT Aktif
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
+            <span className="text-2xl sm:text-3xl font-black text-emerald-950 font-mono">
               {INITIAL_ECO_METRICS.activeSensorsDeployed.toLocaleString('id-ID')}
             </span>
             <span className="text-xs text-indigo-700">Kemasan</span>
           </div>
-          <span className="text-[10px] text-slate-500 block">
+          <span className="text-[10px] text-emerald-700/80 block">
             Tersebar di jaringan ritel & distributor
           </span>
         </div>
@@ -117,11 +117,11 @@ export const EcoTraceabilityHub: React.FC = () => {
         {/* Left 7 cols: Interactive Cold Chain Timeline Map */}
         <div className="lg:col-span-7 glass-panel p-6 rounded-3xl border border-[#c4cb38]/40 space-y-5 shadow-2xl">
           <div className="flex items-center justify-between">
-            <h3 className="text-slate-900 font-bold text-base flex items-center gap-2">
+            <h3 className="text-emerald-950 font-bold text-base flex items-center gap-2">
               <Truck className="w-5 h-5 text-[#1e6238]" />
               Alur Rantai Dingin IoT (Cold Chain Traceability)
             </h3>
-            <span className="text-xs text-slate-500 font-mono">Batch: WAGYU-A5-9921</span>
+            <span className="text-xs text-emerald-700/80 font-mono">Batch: WAGYU-A5-9921</span>
           </div>
 
           {/* Stepper Timeline Points */}
@@ -132,16 +132,16 @@ export const EcoTraceabilityHub: React.FC = () => {
                 onClick={() => setSelectedPointId(point.id)}
                 className={`p-3 rounded-2xl border text-left transition-all ${
                   selectedPointId === point.id
-                    ? 'bg-emerald-500/20 border-emerald-400 text-slate-900 shadow-lg'
-                    : 'bg-white border-[#c4cb38]/40 text-slate-500 hover:border-[#c4cb38]/30'
+                    ? 'bg-emerald-500/20 border-emerald-400 text-emerald-950 shadow-lg'
+                    : 'bg-white border-[#c4cb38]/40 text-emerald-700/80 hover:border-[#c4cb38]/30'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-[10px] font-mono text-[#1e6238] font-bold">Tahap {index + 1}</span>
                   <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
                 </div>
-                <h4 className="text-xs font-bold text-slate-900 truncate">{point.stageName}</h4>
-                <span className="text-[10px] text-slate-500 block truncate mt-0.5">{point.locationName}</span>
+                <h4 className="text-xs font-bold text-emerald-950 truncate">{point.stageName}</h4>
+                <span className="text-[10px] text-emerald-700/80 block truncate mt-0.5">{point.locationName}</span>
               </button>
             ))}
           </div>
@@ -151,14 +151,14 @@ export const EcoTraceabilityHub: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#c4cb38]/40 pb-3">
               <div>
                 <span className="text-xs text-[#1e6238] font-mono font-bold block">{selectedPoint.id}</span>
-                <h4 className="text-base font-extrabold text-slate-900">{selectedPoint.stageName}</h4>
-                <p className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
-                  <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                <h4 className="text-base font-extrabold text-emerald-950">{selectedPoint.stageName}</h4>
+                <p className="text-xs text-emerald-700/80 flex items-center gap-1 mt-0.5">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-700/80" />
                   {selectedPoint.locationName}
                 </p>
               </div>
               <div className="text-right">
-                <span className="text-[11px] font-mono text-slate-500 block">{selectedPoint.timestamp}</span>
+                <span className="text-[11px] font-mono text-emerald-700/80 block">{selectedPoint.timestamp}</span>
                 <span className="text-xs font-bold text-[#1e6238] bg-[#f0efc0]/80 px-2.5 py-0.5 rounded-full border border-[#c4cb38]/50">
                   Status: Optimal
                 </span>
@@ -167,33 +167,33 @@ export const EcoTraceabilityHub: React.FC = () => {
 
             {/* IoT Telemetry Data */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              <div className="p-3 rounded-xl bg-slate-950/80 border border-[#c4cb38]/40">
-                <span className="text-[10px] text-slate-500 block flex items-center gap-1">
+              <div className="p-3 rounded-xl bg-emerald-950/80 border border-[#c4cb38]/40">
+                <span className="text-[10px] text-emerald-700/80 block flex items-center gap-1">
                   <Thermometer className="w-3.5 h-3.5 text-cyan-700" /> Suhu Logistik
                 </span>
-                <span className="text-xl font-bold text-slate-900 font-mono mt-0.5 block">
+                <span className="text-xl font-bold text-emerald-950 font-mono mt-0.5 block">
                   {selectedPoint.temperatureCelsius}°C
                 </span>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-950/80 border border-[#c4cb38]/40">
-                <span className="text-[10px] text-slate-500 block flex items-center gap-1">
+              <div className="p-3 rounded-xl bg-emerald-950/80 border border-[#c4cb38]/40">
+                <span className="text-[10px] text-emerald-700/80 block flex items-center gap-1">
                   <Droplets className="w-3.5 h-3.5 text-blue-400" /> Kelembapan (RH)
                 </span>
-                <span className="text-xl font-bold text-slate-900 font-mono mt-0.5 block">
+                <span className="text-xl font-bold text-emerald-950 font-mono mt-0.5 block">
                   {selectedPoint.humidityPercent}%
                 </span>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-950/80 border border-[#c4cb38]/40 col-span-2 sm:col-span-1">
-                <span className="text-[10px] text-slate-500 block">Koordinat GPS</span>
-                <span className="text-xs font-mono text-slate-600 mt-1 block">
+              <div className="p-3 rounded-xl bg-emerald-950/80 border border-[#c4cb38]/40 col-span-2 sm:col-span-1">
+                <span className="text-[10px] text-emerald-700/80 block">Koordinat GPS</span>
+                <span className="text-xs font-mono text-emerald-800 mt-1 block">
                   {selectedPoint.gpsCoordinates.lat}, {selectedPoint.gpsCoordinates.lng}
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-slate-600 bg-slate-950/40 p-3 rounded-xl border border-[#c4cb38]/40/80 leading-relaxed">
+            <p className="text-xs text-emerald-800 bg-emerald-950/40 p-3 rounded-xl border border-[#c4cb38]/40/80 leading-relaxed">
               <span className="text-[#1e6238] font-semibold">Catatan Verifikasi: </span>
               {selectedPoint.notes}
             </p>
@@ -201,7 +201,7 @@ export const EcoTraceabilityHub: React.FC = () => {
             <div className="flex justify-end pt-1">
               <button
                 onClick={() => setShowCertModal(true)}
-                className="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-xs font-semibold border border-[#c4cb38]/30 flex items-center gap-1.5 transition-all cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-white hover:bg-emerald-50 text-emerald-900 text-xs font-semibold border border-[#c4cb38]/30 flex items-center gap-1.5 transition-all cursor-pointer"
               >
                 <Lock className="w-3.5 h-3.5 text-[#1e6238]" />
                 Lihat Sertifikat Keaslian Digital
@@ -215,17 +215,17 @@ export const EcoTraceabilityHub: React.FC = () => {
         <div className="lg:col-span-5 glass-panel p-6 rounded-3xl border border-[#c4cb38]/40 space-y-5 shadow-2xl">
           <div className="flex items-center gap-2">
             <Calculator className="w-5 h-5 text-[#1e6238]" />
-            <h3 className="text-slate-900 font-bold text-base">Kalkulator Dampak Sirkular Biomassa</h3>
+            <h3 className="text-emerald-950 font-bold text-base">Kalkulator Dampak Sirkular Biomassa</h3>
           </div>
 
-          <p className="text-xs text-slate-600 leading-relaxed">
+          <p className="text-xs text-emerald-800 leading-relaxed">
             Hitung kontribusi lingkungan bila Anda atau bisnis Anda mengadopsi stiker kemasan pintar GENT berbasis selulosa jerami padi:
           </p>
 
           {/* Input Slider */}
           <div className="space-y-2 p-4 rounded-2xl bg-white border border-[#c4cb38]/30">
             <div className="flex items-center justify-between text-xs">
-              <span className="text-slate-600 font-medium">Jumlah Kemasan Daging:</span>
+              <span className="text-emerald-800 font-medium">Jumlah Kemasan Daging:</span>
               <span className="text-[#1e6238] font-bold font-mono text-sm">{customPackageUnits} Kemasan</span>
             </div>
             <div className="py-2">
@@ -239,7 +239,7 @@ export const EcoTraceabilityHub: React.FC = () => {
                 className="range-light w-full cursor-pointer"
               />
             </div>
-            <div className="flex justify-between text-[10px] text-slate-500 font-mono">
+            <div className="flex justify-between text-[10px] text-emerald-700/80 font-mono">
               <span>50 pcs</span>
               <span>2.500 pcs</span>
               <span>5.000 pcs</span>
@@ -252,8 +252,8 @@ export const EcoTraceabilityHub: React.FC = () => {
               <div className="flex items-center gap-2.5">
                 <Leaf className="w-4 h-4 text-[#1e6238]" />
                 <div>
-                  <span className="text-xs text-slate-600 font-semibold block">Limbah Jerami Dimanfaatkan</span>
-                  <span className="text-[10px] text-slate-500">Mencegah polusi pembakaran sawah</span>
+                  <span className="text-xs text-emerald-800 font-semibold block">Limbah Jerami Dimanfaatkan</span>
+                  <span className="text-[10px] text-emerald-700/80">Mencegah polusi pembakaran sawah</span>
                 </div>
               </div>
               <span className="text-base font-black text-[#1e6238] font-mono">+{calculatedStrawKg} kg</span>
@@ -263,8 +263,8 @@ export const EcoTraceabilityHub: React.FC = () => {
               <div className="flex items-center gap-2.5">
                 <Sparkles className="w-4 h-4 text-teal-800" />
                 <div>
-                  <span className="text-xs text-slate-600 font-semibold block">Pencegahan Emisi CO2e</span>
-                  <span className="text-[10px] text-slate-500">Dihitung dari LCA kemasan bio</span>
+                  <span className="text-xs text-emerald-800 font-semibold block">Pencegahan Emisi CO2e</span>
+                  <span className="text-[10px] text-emerald-700/80">Dihitung dari LCA kemasan bio</span>
                 </div>
               </div>
               <span className="text-base font-black text-teal-800 font-mono">-{calculatedCo2Kg} kg</span>
@@ -274,8 +274,8 @@ export const EcoTraceabilityHub: React.FC = () => {
               <div className="flex items-center gap-2.5">
                 <ShieldCheck className="w-4 h-4 text-cyan-700" />
                 <div>
-                  <span className="text-xs text-slate-600 font-semibold block">Daging Segar Terselamatkan</span>
-                  <span className="text-[10px] text-slate-500">Pencegahan food waste rantai pasok</span>
+                  <span className="text-xs text-emerald-800 font-semibold block">Daging Segar Terselamatkan</span>
+                  <span className="text-[10px] text-emerald-700/80">Pencegahan food waste rantai pasok</span>
                 </div>
               </div>
               <span className="text-base font-black text-cyan-700 font-mono">~{calculatedFoodSavedKg} kg</span>
@@ -289,7 +289,7 @@ export const EcoTraceabilityHub: React.FC = () => {
       {/* Digital Certificate Modal */}
       {showCertModal && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#faf9ea] border border-[#c4cb38]/30 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 text-slate-900 animate-fadeIn">
+          <div className="bg-[#faf9ea] border border-[#c4cb38]/30 rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 text-emerald-950 animate-fadeIn">
             <div className="flex items-center justify-between border-b border-[#c4cb38]/40 pb-3">
               <div className="flex items-center gap-2">
                 <Award className="w-5 h-5 text-[#1e6238]" />
@@ -297,44 +297,44 @@ export const EcoTraceabilityHub: React.FC = () => {
               </div>
               <button
                 onClick={() => setShowCertModal(false)}
-                className="text-slate-500 hover:text-slate-900 text-sm"
+                className="text-emerald-700/80 hover:text-emerald-950 text-sm"
               >
                 ✕
               </button>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-950 border border-[#c4cb38]/40 space-y-3 font-mono text-xs">
+            <div className="p-4 rounded-2xl bg-emerald-950 border border-[#c4cb38]/40 space-y-3 font-mono text-xs">
               <div className="flex justify-between border-b border-[#c4cb38]/40/80 pb-2">
-                <span className="text-slate-500">ID Sertifikat:</span>
+                <span className="text-emerald-700/80">ID Sertifikat:</span>
                 <span className="text-[#1e6238] font-bold">GENT-AUTH-2026-UGM-9912</span>
               </div>
               <div className="flex justify-between border-b border-[#c4cb38]/40/80 pb-2">
-                <span className="text-slate-500">Batch Code:</span>
-                <span className="text-slate-900">WAGYU-A5-9921</span>
+                <span className="text-emerald-700/80">Batch Code:</span>
+                <span className="text-emerald-950">WAGYU-A5-9921</span>
               </div>
               <div className="flex justify-between border-b border-[#c4cb38]/40/80 pb-2">
-                <span className="text-slate-500">Biomassa Jerami:</span>
+                <span className="text-emerald-700/80">Biomassa Jerami:</span>
                 <span className="text-[#1e6238]">100% Selulosa Jerami DIY</span>
               </div>
               <div className="flex justify-between border-b border-[#c4cb38]/40/80 pb-2">
-                <span className="text-slate-500">Formulasi Sensor:</span>
+                <span className="text-emerald-700/80">Formulasi Sensor:</span>
                 <span className="text-yellow-600">Curcumin-DES (Deep Eutectic Solvent)</span>
               </div>
               <div>
-                <span className="text-slate-500 block">Verifikasi Hash Kriptografi:</span>
-                <span className="text-[10px] text-slate-500 break-all block mt-0.5">
+                <span className="text-emerald-700/80 block">Verifikasi Hash Kriptografi:</span>
+                <span className="text-[10px] text-emerald-700/80 break-all block mt-0.5">
                   e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
                 </span>
               </div>
             </div>
 
-            <p className="text-[11px] text-slate-500">
+            <p className="text-[11px] text-emerald-700/80">
               Sertifikat ini memverifikasi bahwa kemasan daging telah melewati kontrol suhu berstandar HACCP dan memanfaatkan inovasi kemasan pintar karya UGM.
             </p>
 
             <button
               onClick={() => setShowCertModal(false)}
-              className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-900 font-bold text-xs"
+              className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-emerald-950 font-bold text-xs"
             >
               Tutup Sertifikat
             </button>

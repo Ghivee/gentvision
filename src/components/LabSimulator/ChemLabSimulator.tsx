@@ -84,10 +84,10 @@ export const ChemLabSimulator: React.FC = () => {
           <FlaskConical className="w-3.5 h-3.5" />
           <span>Interactive Science Lab Simulator</span>
         </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
+        <h2 className="text-2xl sm:text-4xl font-extrabold text-emerald-950">
           Simulator Kinetika Reaksi Kurkumin - DES
         </h2>
-        <p className="max-w-2xl mx-auto text-slate-400 text-xs sm:text-sm">
+        <p className="max-w-2xl mx-auto text-emerald-600/70 text-xs sm:text-sm">
           Eksplorasi bagaimana variasi derajat keasaman (pH) dan uap amonia/TVB-N mempengaruhi konformasi molekuler dan pergeseran panjang gelombang absorban.
         </p>
       </div>
@@ -101,7 +101,7 @@ export const ChemLabSimulator: React.FC = () => {
           {/* Slider 1: pH */}
           <div className="p-5 rounded-2xl bg-white border border-[#c4cb38]/30 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-600">Derajat Keasaman (pH Sampel)</span>
+              <span className="text-xs font-bold text-emerald-800">Derajat Keasaman (pH Sampel)</span>
               <span className="text-lg font-black text-[#1e6238] font-mono">pH {simPh.toFixed(1)}</span>
             </div>
             <div className="py-2">
@@ -119,7 +119,7 @@ export const ChemLabSimulator: React.FC = () => {
                 className="range-light w-full cursor-pointer"
               />
             </div>
-            <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+            <div className="flex justify-between text-[10px] text-emerald-600/70 font-mono">
               <span>pH 5.5 (Asam Segar)</span>
               <span>pH 7.0 (Netral)</span>
               <span>pH 9.0 (Basa Kuat)</span>
@@ -129,7 +129,7 @@ export const ChemLabSimulator: React.FC = () => {
           {/* Slider 2: TVB-N */}
           <div className="p-5 rounded-2xl bg-white border border-[#c4cb38]/30 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-600">Konsentrasi Gas TVB-N</span>
+              <span className="text-xs font-bold text-emerald-800">Konsentrasi Gas TVB-N</span>
               <span className="text-lg font-black text-purple-700 font-mono">{simTvbn} mg/100g</span>
             </div>
             <div className="py-2">
@@ -147,7 +147,7 @@ export const ChemLabSimulator: React.FC = () => {
                 className="range-light w-full cursor-pointer"
               />
             </div>
-            <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+            <div className="flex justify-between text-[10px] text-emerald-600/70 font-mono">
               <span>&lt; 10 (Segar)</span>
               <span>15 - 20 (Waspada)</span>
               <span>&gt; 25 (Busuk)</span>
@@ -162,13 +162,13 @@ export const ChemLabSimulator: React.FC = () => {
           {/* Left 5 cols: Sensor Color Disc & CIE Lab metrics */}
           <div className="lg:col-span-5 p-6 rounded-2xl bg-[#faf9ea] border border-[#c4cb38]/30 flex flex-col items-center justify-center space-y-4 shadow-xl">
             <div className="text-center">
-              <span className="text-xs text-slate-400 font-medium block">Rona Warna Sensor Reaktif</span>
+              <span className="text-xs text-emerald-600/70 font-medium block">Rona Warna Sensor Reaktif</span>
               <span className="text-xs font-mono text-[#1e6238]">{sim.hex}</span>
             </div>
 
             {/* Glowing Sensor Pad Circle */}
             <div 
-              className="w-32 h-32 rounded-full border-4 border-slate-200 shadow-2xl transition-all duration-300 flex items-center justify-center relative"
+              className="w-32 h-32 rounded-full border-4 border-emerald-100 shadow-2xl transition-all duration-300 flex items-center justify-center relative"
               style={{
                 backgroundColor: sim.hex,
                 boxShadow: `0 0 35px ${sim.hex}`,
@@ -179,23 +179,23 @@ export const ChemLabSimulator: React.FC = () => {
 
             {/* Colorimetric Metric Badges */}
             <div className="grid grid-cols-3 gap-2 w-full text-center text-xs font-mono">
-              <div className="p-2 rounded-lg bg-slate-950/80 border border-[#c4cb38]/40">
-                <span className="text-[10px] text-slate-400 block">L*</span>
-                <span className="font-bold text-slate-900">{sim.lab.L}</span>
+              <div className="p-2 rounded-lg bg-emerald-950/80 border border-[#c4cb38]/40">
+                <span className="text-[10px] text-emerald-600/70 block">L*</span>
+                <span className="font-bold text-emerald-950">{sim.lab.L}</span>
               </div>
-              <div className="p-2 rounded-lg bg-slate-950/80 border border-[#c4cb38]/40">
-                <span className="text-[10px] text-slate-400 block">a*</span>
-                <span className="font-bold text-slate-900">{sim.lab.a}</span>
+              <div className="p-2 rounded-lg bg-emerald-950/80 border border-[#c4cb38]/40">
+                <span className="text-[10px] text-emerald-600/70 block">a*</span>
+                <span className="font-bold text-emerald-950">{sim.lab.a}</span>
               </div>
-              <div className="p-2 rounded-lg bg-slate-950/80 border border-[#c4cb38]/40">
-                <span className="text-[10px] text-slate-400 block">b*</span>
-                <span className="font-bold text-slate-900">{sim.lab.b}</span>
+              <div className="p-2 rounded-lg bg-emerald-950/80 border border-[#c4cb38]/40">
+                <span className="text-[10px] text-emerald-600/70 block">b*</span>
+                <span className="font-bold text-emerald-950">{sim.lab.b}</span>
               </div>
             </div>
 
-            <div className="w-full flex justify-between text-xs text-slate-400 font-mono pt-1 border-t border-[#c4cb38]/40">
-              <span>ΔE Jarak Warna: <strong className="text-slate-900">{sim.deltaE}</strong></span>
-              <span>Sudut Hue: <strong className="text-slate-900">{sim.hueAngle.toFixed(1)}°</strong></span>
+            <div className="w-full flex justify-between text-xs text-emerald-600/70 font-mono pt-1 border-t border-[#c4cb38]/40">
+              <span>ΔE Jarak Warna: <strong className="text-emerald-950">{sim.deltaE}</strong></span>
+              <span>Sudut Hue: <strong className="text-emerald-950">{sim.hueAngle.toFixed(1)}°</strong></span>
             </div>
           </div>
 
@@ -205,26 +205,26 @@ export const ChemLabSimulator: React.FC = () => {
             {/* Molecular State */}
             <div className="p-4 rounded-2xl bg-white border border-[#c4cb38]/40 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-400 font-mono">Konformasi Kimiawi</span>
+                <span className="text-xs text-emerald-600/70 font-mono">Konformasi Kimiawi</span>
                 <span className="text-xs font-bold text-[#1e6238] bg-[#f0efc0]/80 px-2.5 py-0.5 rounded-full border border-[#c4cb38]/50">
                   λ-max: {sim.lambdaMax} nm
                 </span>
               </div>
-              <h4 className="text-sm font-black text-slate-900">{sim.molecularForm}</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h4 className="text-sm font-black text-emerald-950">{sim.molecularForm}</h4>
+              <p className="text-xs text-emerald-800 leading-relaxed">
                 {sim.chemicalDesc}
               </p>
             </div>
 
             {/* Simulated UV-Vis Absorbance Spectrum Graph */}
             <div className="p-4 rounded-2xl bg-white border border-[#c4cb38]/40 space-y-2">
-              <div className="flex items-center justify-between text-xs text-slate-400">
+              <div className="flex items-center justify-between text-xs text-emerald-600/70">
                 <span>Simulasi Spektrum Absorban UV-Vis</span>
                 <span className="font-mono text-[10px]">350 nm — 600 nm</span>
               </div>
 
               {/* Spectrum SVG Curve */}
-              <div className="relative h-28 w-full bg-slate-950 rounded-xl border border-[#c4cb38]/40 p-2 overflow-hidden flex items-end">
+              <div className="relative h-28 w-full bg-emerald-950 rounded-xl border border-[#c4cb38]/40 p-2 overflow-hidden flex items-end">
                 {/* Background Grid Lines */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:16px_16px] opacity-40" />
 
@@ -258,7 +258,7 @@ export const ChemLabSimulator: React.FC = () => {
 
                 {/* Peak Indicator Label */}
                 <div 
-                  className="absolute top-2 text-[10px] font-mono px-2 py-0.5 rounded bg-[#faf9ea] text-slate-900 border border-[#c4cb38]/30 transition-all"
+                  className="absolute top-2 text-[10px] font-mono px-2 py-0.5 rounded bg-[#faf9ea] text-emerald-950 border border-[#c4cb38]/30 transition-all"
                   style={{
                     left: `${Math.max(10, Math.min(75, ((sim.lambdaMax - 350) / 250) * 100))}%`
                   }}
@@ -267,16 +267,16 @@ export const ChemLabSimulator: React.FC = () => {
                 </div>
               </div>
 
-              <span className="text-[10px] text-slate-400 font-mono block text-right">
+              <span className="text-[10px] text-emerald-600/70 font-mono block text-right">
                 Pergeseran Batokromik (Red-Shift) seiring alkalinitas TVB-N
               </span>
             </div>
 
             {/* Deep Eutectic Solvent (DES) Role Box */}
-            <div className="p-3 rounded-xl bg-slate-950/60 border border-[#c4cb38]/40 text-[11px] text-slate-600 flex items-start gap-2.5">
+            <div className="p-3 rounded-xl bg-emerald-950/60 border border-[#c4cb38]/40 text-[11px] text-emerald-800 flex items-start gap-2.5">
               <Atom className="w-4 h-4 text-cyan-700 flex-shrink-0 mt-0.5" />
               <span>
-                <strong className="text-slate-900">Peran Matriks DES: </strong>
+                <strong className="text-emerald-950">Peran Matriks DES: </strong>
                 Deep Eutectic Solvent (Choline Chloride : Glycerol) menstabilkan kurkumin alami dari degradasi termal dan fotodegradasi, serta mempercepat transfer massa gas amonia ke situs aktif kurkumin.
               </span>
             </div>
