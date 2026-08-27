@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { 
   ShieldAlert, 
   Utensils, 
@@ -49,18 +49,18 @@ export const ConsumerHub: React.FC = () => {
   };
 
   return (
-    <section id="consumer-section" className="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-8 pb-24 lg:pb-12">
       
       {/* Section Header */}
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f0efc0]/80 border border-[#c4cb38]/50 text-[#1e6238] text-xs font-semibold">
           <ChefHat className="w-3.5 h-3.5" />
           <span>Fitur Utama C: Consumer Alert & Action System</span>
         </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
+        <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
           Asisten Keamanan Pangan & Dapur Cerdas
         </h2>
-        <p className="max-w-2xl mx-auto text-slate-400 text-xs sm:text-sm">
+        <p className="max-w-2xl mx-auto text-slate-500 text-xs sm:text-sm">
           Panduan interaktif konsumen rumah tangga untuk mengolah daging sesuai status sensor GENT, mencegah kontaminasi silang, dan menjamin kesehatan keluarga.
         </p>
       </div>
@@ -70,42 +70,42 @@ export const ConsumerHub: React.FC = () => {
         
         {/* Status 1 Box */}
         <div className="p-5 rounded-2xl bg-yellow-500/10 border border-yellow-500/30 space-y-3">
-          <div className="flex items-center gap-2 text-yellow-400 font-bold text-sm">
+          <div className="flex items-center gap-2 text-yellow-600 font-bold text-sm">
             <CheckCircle2 className="w-5 h-5" />
             <span>KUNING (SEGAR)</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className="text-xs text-slate-600 leading-relaxed">
             pH &lt; 7.0. Gas TVB-N sangat rendah. Bebas diolah menjadi hidangan apa pun (Medium-Rare, Sate, Shabu-shabu). Aman dibekukan ulang di freezer.
           </p>
-          <div className="text-[11px] text-yellow-300/80 font-mono bg-yellow-950/40 p-2 rounded-lg border border-yellow-500/20">
+          <div className="text-[11px] text-yellow-600/80 font-mono bg-yellow-950/40 p-2 rounded-lg border border-yellow-500/20">
             Suhu simpan: 0°C – 4°C
           </div>
         </div>
 
         {/* Status 2 Box */}
         <div className="p-5 rounded-2xl bg-orange-500/10 border border-orange-500/30 space-y-3">
-          <div className="flex items-center gap-2 text-orange-400 font-bold text-sm">
+          <div className="flex items-center gap-2 text-orange-600 font-bold text-sm">
             <AlertTriangle className="w-5 h-5" />
             <span>JINGGA (MULAI MENURUN)</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed">
-            pH mendekati 8. Masak hari ini juga dengan kematangan sempurna (<span className="text-orange-300 font-bold">Well-Done &gt;71°C</span>). Dilarang dibekukan ulang!
+          <p className="text-xs text-slate-600 leading-relaxed">
+            pH mendekati 8. Masak hari ini juga dengan kematangan sempurna (<span className="text-orange-600 font-bold">Well-Done &gt;71°C</span>). Dilarang dibekukan ulang!
           </p>
-          <div className="text-[11px] text-orange-300/80 font-mono bg-orange-950/40 p-2 rounded-lg border border-orange-500/20">
+          <div className="text-[11px] text-orange-600/80 font-mono bg-orange-950/40 p-2 rounded-lg border border-orange-500/20">
             Tindakan: Masak tuntas hari ini
           </div>
         </div>
 
         {/* Status 3 Box */}
         <div className="p-5 rounded-2xl bg-red-500/10 border border-red-500/30 space-y-3">
-          <div className="flex items-center gap-2 text-red-400 font-bold text-sm">
+          <div className="flex items-center gap-2 text-red-600 font-bold text-sm">
             <XCircle className="w-5 h-5" />
             <span>MERAH KECOKELATAN (BUSUK)</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed">
-            pH &gt; 8.0. TVB-N tinggi. <span className="text-red-300 font-bold">BAHAYA RACUN!</span> Jangan dicuci atau dimasak. Segera buang dan disinfeksi kulkas Anda.
+          <p className="text-xs text-slate-600 leading-relaxed">
+            pH &gt; 8.0. TVB-N tinggi. <span className="text-red-600 font-bold">BAHAYA RACUN!</span> Jangan dicuci atau dimasak. Segera buang dan disinfeksi kulkas Anda.
           </p>
-          <div className="text-[11px] text-red-300/80 font-mono bg-red-950/40 p-2 rounded-lg border border-red-500/20">
+          <div className="text-[11px] text-red-600/80 font-mono bg-red-950/40 p-2 rounded-lg border border-red-500/20">
             Tindakan: Buang & disinfeksi rak
           </div>
         </div>
@@ -113,14 +113,14 @@ export const ConsumerHub: React.FC = () => {
       </div>
 
       {/* Consumer Interactive Tooltabs */}
-      <div className="glass-panel p-6 rounded-3xl border border-slate-800 shadow-2xl space-y-6">
+      <div className="glass-panel p-6 rounded-3xl border border-[#c4cb38]/40 shadow-2xl space-y-6">
         
         {/* Tab Selector */}
-        <div className="flex bg-slate-900 p-1.5 rounded-2xl border border-slate-800 max-w-md mx-auto">
+        <div className="flex bg-[#faf9ea] p-1.5 rounded-2xl border border-[#c4cb38]/40 max-w-md mx-auto">
           <button
             onClick={() => setActiveTab('cooking')}
             className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
-              activeTab === 'cooking' ? 'bg-emerald-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
+              activeTab === 'cooking' ? 'bg-emerald-600 text-slate-900 shadow-md' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             <Flame className="w-4 h-4" />
@@ -129,7 +129,7 @@ export const ConsumerHub: React.FC = () => {
           <button
             onClick={() => setActiveTab('hygiene')}
             className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
-              activeTab === 'hygiene' ? 'bg-emerald-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
+              activeTab === 'hygiene' ? 'bg-emerald-600 text-slate-900 shadow-md' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             <ShieldAlert className="w-4 h-4" />
@@ -138,7 +138,7 @@ export const ConsumerHub: React.FC = () => {
           <button
             onClick={() => setActiveTab('reminder')}
             className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
-              activeTab === 'reminder' ? 'bg-emerald-600 text-white shadow-md' : 'text-slate-400 hover:text-slate-200'
+              activeTab === 'reminder' ? 'bg-emerald-600 text-slate-900 shadow-md' : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             <Bell className="w-4 h-4" />
@@ -152,7 +152,7 @@ export const ConsumerHub: React.FC = () => {
             
             {/* Cut Selector */}
             <div className="space-y-2">
-              <label className="text-xs text-slate-400 font-medium block">Pilih Jenis Potongan Daging:</label>
+              <label className="text-xs text-slate-500 font-medium block">Pilih Jenis Potongan Daging:</label>
               <div className="grid grid-cols-3 gap-3">
                 {[
                   { id: 'steak', label: '🥩 Steak Daging Sapi' },
@@ -164,8 +164,8 @@ export const ConsumerHub: React.FC = () => {
                     onClick={() => setTargetMeatCut(c.id as any)}
                     className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all text-center ${
                       targetMeatCut === c.id
-                        ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 shadow-md'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700'
+                        ? 'bg-emerald-500/20 border-[#70bc2c] text-[#1e6238] shadow-md'
+                        : 'bg-[#faf9ea] border-[#c4cb38]/40 text-slate-500 hover:border-[#c4cb38]/30'
                     }`}
                   >
                     {c.label}
@@ -176,7 +176,7 @@ export const ConsumerHub: React.FC = () => {
 
             {/* Doneness Selector */}
             <div className="space-y-2">
-              <label className="text-xs text-slate-400 font-medium block">Tingkat Kematangan yang Diinginkan:</label>
+              <label className="text-xs text-slate-500 font-medium block">Tingkat Kematangan yang Diinginkan:</label>
               <div className="grid grid-cols-3 gap-3">
                 {[
                   { id: 'rare', label: 'Rare / Setengah Matang' },
@@ -188,8 +188,8 @@ export const ConsumerHub: React.FC = () => {
                     onClick={() => setSelectedDoneness(d.id as any)}
                     className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all text-center ${
                       selectedDoneness === d.id
-                        ? 'bg-cyan-500/20 border-cyan-500 text-cyan-300 shadow-md'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700'
+                        ? 'bg-cyan-500/20 border-cyan-500 text-cyan-700 shadow-md'
+                        : 'bg-[#faf9ea] border-[#c4cb38]/40 text-slate-500 hover:border-[#c4cb38]/30'
                     }`}
                   >
                     {d.label}
@@ -199,15 +199,15 @@ export const ConsumerHub: React.FC = () => {
             </div>
 
             {/* Calculated Cooking Guide Card */}
-            <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-700 shadow-xl space-y-4">
+            <div className="p-5 rounded-2xl bg-[#faf9ea] border border-[#c4cb38]/30 shadow-xl space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-400 font-mono">Panduan Parameter Internal</span>
+                <span className="text-xs text-slate-500 font-mono">Panduan Parameter Internal</span>
                 <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${
                   cookingGuides.safeStatus === 'fresh_only'
-                    ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/40'
+                    ? 'bg-yellow-500/20 text-yellow-600 border-yellow-500/40'
                     : cookingGuides.safeStatus === 'warning_ok'
-                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
-                    : 'bg-red-500/20 text-red-300 border-red-500/40'
+                    ? 'bg-emerald-500/20 text-[#1e6238] border-[#70bc2c]/40'
+                    : 'bg-red-500/20 text-red-600 border-red-500/40'
                 }`}>
                   {cookingGuides.safeStatus === 'fresh_only'
                     ? 'Syarat: Daging Kuning (Segar)'
@@ -218,18 +218,18 @@ export const ConsumerHub: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 block">Suhu Internal Inti Daging</span>
-                  <span className="text-xl font-black text-white font-mono mt-0.5 block">{cookingGuides.temp}</span>
+                <div className="p-3 rounded-xl bg-white border border-slate-200 border border-[#c4cb38]/40">
+                  <span className="text-[10px] text-slate-500 block">Suhu Internal Inti Daging</span>
+                  <span className="text-xl font-black text-slate-900 font-mono mt-0.5 block">{cookingGuides.temp}</span>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 block">Estimasi Durasi Masak</span>
-                  <span className="text-xl font-black text-white font-mono mt-0.5 block">{cookingGuides.time}</span>
+                <div className="p-3 rounded-xl bg-white border border-slate-200 border border-[#c4cb38]/40">
+                  <span className="text-[10px] text-slate-500 block">Estimasi Durasi Masak</span>
+                  <span className="text-xl font-black text-slate-900 font-mono mt-0.5 block">{cookingGuides.time}</span>
                 </div>
               </div>
 
-              <p className="text-xs text-slate-300 bg-slate-950/40 p-3 rounded-xl border border-slate-800 leading-relaxed">
-                <span className="text-emerald-400 font-semibold">Petunjuk Koki: </span>
+              <p className="text-xs text-slate-600 bg-white border border-slate-200 p-3 rounded-xl border border-[#c4cb38]/40 leading-relaxed">
+                <span className="text-[#1e6238] font-semibold">Petunjuk Koki: </span>
                 {cookingGuides.note}
               </p>
             </div>
@@ -240,13 +240,13 @@ export const ConsumerHub: React.FC = () => {
         {/* TAB 2: Kitchen Hygiene Checklist */}
         {activeTab === 'hygiene' && (
           <div className="space-y-4 max-w-2xl mx-auto">
-            <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
-              <h4 className="font-bold text-white text-sm flex items-center gap-2">
-                <ShieldAlert className="w-4 h-4 text-cyan-400" />
+            <div className="p-4 rounded-2xl bg-white border border-[#c4cb38]/40 space-y-3">
+              <h4 className="font-bold text-slate-900 text-sm flex items-center gap-2">
+                <ShieldAlert className="w-4 h-4 text-cyan-700" />
                 Protokol Anti Kontaminasi Silang di Dapur
               </h4>
 
-              <div className="space-y-2 text-xs text-slate-300">
+              <div className="space-y-2 text-xs text-slate-600">
                 {[
                   'Pisahkan talenan khusus daging mentah (warna merah) dengan talenan sayur/buah siap makan.',
                   'Cuci tangan dengan sabun air mengalir minimal 20 detik setelah memegang kemasan atau daging mentah.',
@@ -254,8 +254,8 @@ export const ConsumerHub: React.FC = () => {
                   'Jangan mencuci daging mentah di wastafel karena percikan air dapat menyebarkan bakteri hingga radius 1 meter.',
                   'Jika sensor GENT menunjukkan status MERAH, segera semprot rak kulkas dengan cairan alkohol/disinfektan.',
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 p-2 rounded-lg bg-slate-950/40 border border-slate-800/80">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <div key={idx} className="flex items-start gap-2.5 p-2 rounded-lg bg-white border border-slate-200 border border-[#c4cb38]/40/80">
+                    <CheckCircle2 className="w-4 h-4 text-[#1e6238] flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -267,25 +267,25 @@ export const ConsumerHub: React.FC = () => {
         {/* TAB 3: Smart Fridge Reminder */}
         {activeTab === 'reminder' && (
           <div className="space-y-4 max-w-xl mx-auto">
-            <form onSubmit={handleSaveReminder} className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4">
-              <h4 className="font-bold text-white text-sm flex items-center gap-2">
-                <Bell className="w-4 h-4 text-yellow-400" />
+            <form onSubmit={handleSaveReminder} className="p-5 rounded-2xl bg-white border border-[#c4cb38]/40 space-y-4">
+              <h4 className="font-bold text-slate-900 text-sm flex items-center gap-2">
+                <Bell className="w-4 h-4 text-yellow-600" />
                 Setel Pengingat Batas Masak Daging
               </h4>
 
               <div className="space-y-1">
-                <label className="text-xs text-slate-400 block">Nama Produk / Potongan Daging:</label>
+                <label className="text-xs text-slate-500 block">Nama Produk / Potongan Daging:</label>
                 <input
                   type="text"
                   value={reminderMeatName}
                   onChange={(e) => setReminderMeatName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 text-white border border-slate-800 text-xs focus:outline-none focus:border-emerald-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 text-slate-900 border border-[#c4cb38]/40 text-xs focus:outline-none focus:border-[#70bc2c]"
                   required
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs text-slate-400 block">Ingatkan Saya Dalam (Berdasarkan Umur Simpan Sensor):</label>
+                <label className="text-xs text-slate-500 block">Ingatkan Saya Dalam (Berdasarkan Umur Simpan Sensor):</label>
                 <div className="grid grid-cols-3 gap-2">
                   {[12, 24, 48].map((h) => (
                     <button
@@ -294,8 +294,8 @@ export const ConsumerHub: React.FC = () => {
                       onClick={() => setReminderHours(h)}
                       className={`py-2 rounded-xl text-xs font-bold border transition-all ${
                         reminderHours === h
-                          ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300'
-                          : 'bg-slate-950 border-slate-800 text-slate-400'
+                          ? 'bg-emerald-500/20 border-[#70bc2c] text-[#1e6238]'
+                          : 'bg-slate-950 border-[#c4cb38]/40 text-slate-500'
                       }`}
                     >
                       {h} Jam
@@ -306,14 +306,14 @@ export const ConsumerHub: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-900 font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Bell className="w-4 h-4" />
                 Simpan Jadwal Pengingat
               </button>
 
               {reminderSaved && (
-                <div className="p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs text-center font-semibold animate-fadeIn">
+                <div className="p-3 rounded-xl bg-emerald-500/20 border border-[#70bc2c]/40 text-[#1e6238] text-xs text-center font-semibold animate-fadeIn">
                   ✓ Pengingat berhasil diaktifkan! Anda akan menerima notifikasi suara dan visual.
                 </div>
               )}
@@ -323,6 +323,6 @@ export const ConsumerHub: React.FC = () => {
 
       </div>
 
-    </section>
+    </div>
   );
 };

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @layer base {
@@ -25,60 +26,88 @@
     background-color: #faf9ea;
     background-image: radial-gradient(rgba(30, 98, 56, 0.03) 1px, transparent 1px);
     background-size: 24px 24px;
-    selection-background-color: #70bc2c;
-    selection-color: #ffffff;
     overflow-x: hidden;
   }
 }
 
-/* Custom glowing and ambient animations */
+/* ─── Keyframes ─────────────────────────────────────────── */
+
 @keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(1deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
 }
 
 @keyframes scan-line {
-  0% {
-    top: 0%;
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    top: 100%;
-    opacity: 0.8;
-  }
+  0% { top: 0%; opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0.8; }
 }
 
 @keyframes gas-dissipate {
-  0% {
+  0% { opacity: 0; transform: translateY(10px) scale(0.8); }
+  50% { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(-30px) scale(1.4); }
+}
+
+/* ─── Auto-scroll Result Reveal ─────────────────────────── */
+@keyframes fadeInUp {
+  from {
     opacity: 0;
-    transform: translateY(10px) scale(0.8);
+    transform: translateY(24px);
   }
-  50% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-30px) scale(1.4);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ─── Capture Flash Animation ───────────────────────────── */
+@keyframes capture-flash {
+  0% { opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+/* ─── Shake for scan feedback ───────────────────────────── */
+@keyframes scan-success-ring {
+  0% { box-shadow: 0 0 0 0 rgba(112, 188, 44, 0.7); }
+  70% { box-shadow: 0 0 0 16px rgba(112, 188, 44, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(112, 188, 44, 0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ─── Utility Classes ───────────────────────────────────── */
 
 .animate-pulse-glow {
   animation: pulse-glow 3s infinite ease-in-out;
@@ -96,7 +125,31 @@
   animation: gas-dissipate 3s infinite ease-out;
 }
 
-/* Light Theme Glassmorphism styles */
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-capture-flash {
+  animation: capture-flash 0.4s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.35s ease-out both;
+}
+
+.animate-scan-success {
+  animation: scan-success-ring 0.6s ease-out;
+}
+
+/* ─── Glassmorphism Panels ──────────────────────────────── */
 .glass-panel {
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
@@ -113,25 +166,166 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
 }
 
-.glass-input {
-  background: rgba(248, 250, 252, 0.9);
-  border: 1px solid rgba(203, 213, 225, 0.8);
+/* Dark glass for dark-bg sections (FEFO, Lab, Eco, Consumer) */
+.glass-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+/* Override glass-panel inside dark sections to use dark glass */
+.light-section-removed .glass-panel {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
+/* Mobile horizontal scroll table container */
+.table-scroll-mobile {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #334155 #0f172a;
+}
+.table-scroll-mobile::-webkit-scrollbar {
+  height: 4px;
+}
+.table-scroll-mobile::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.table-scroll-mobile::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 2px;
+}
 
+/* ─── Custom Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f0efc0; }
+::-webkit-scrollbar-thumb { background: #c4cb38; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #1e6238; }
+
+/* ─── Section Divider ───────────────────────────────────── */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c4cb38, #1e6238, #c4cb38, transparent);
+  opacity: 0.4;
+}
+
+/* ─── Dark section background (for FEFO/Traceability) ──── */
+.light-section-removed {
+  background: linear-gradient(180deg, #0f172a 0%, #0c1a2e 100%);
+  color: #f8fafc;
+}
+
+/* ─── Bottom Nav Safe Area ──────────────────────────────── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .bottom-nav-safe {
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* ─── Range Input Styling (Precision-aligned) ───────────── */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+/* Light theme track (for eco calculator) */
+input[type='range'].range-light::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #1e6238, #c4cb38);
+}
+input[type='range'].range-light::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: #1e6238;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 6px rgba(30,98,56,0.4);
+}
+input[type='range'].range-light::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1e6238;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+/* Dark theme track (for Lab Simulator, FEFO) */
+input[type='range'].range-light {
+  background: transparent;
+}
+input[type='range'].range-light::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: #1e293b;
+}
+input[type='range'].range-light::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: #34d399;
+  cursor: pointer;
+  border: 2px solid #0f172a;
+  box-shadow: 0 0 8px rgba(52,211,153,0.5);
+}
+input[type='range'].range-light::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #34d399;
+  cursor: pointer;
+  border: 2px solid #0f172a;
+}
+
+/* Purple variant for TVB-N slider */
+input[type='range'].range-light::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: #1e293b;
+}
+input[type='range'].range-light::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: #a78bfa;
+  cursor: pointer;
+  border: 2px solid #0f172a;
+  box-shadow: 0 0 8px rgba(167,139,250,0.5);
+}
+input[type='range'].range-light::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #a78bfa;
+  cursor: pointer;
+  border: 2px solid #0f172a;
+}
+
+/* ─── Mobile tab scroll ─────────────────────────────────── */
+.tab-scroll {
+  scrollbar-width: none;
+}
+.tab-scroll::-webkit-scrollbar {
+  display: none;
+}

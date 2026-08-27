@@ -1,9 +1,9 @@
-﻿import React from 'react';
+import React from 'react';
 import { Leaf } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-white border-t border-[#c4cb38]/30 py-8 px-4 sm:px-6 lg:px-8 text-slate-500 text-xs">
+    <footer className="bg-white border-t border-[#c4cb38]/30 py-8 pb-24 lg:pb-8 px-4 sm:px-6 lg:px-8 text-slate-500 text-xs">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         
         {/* Brand */}
