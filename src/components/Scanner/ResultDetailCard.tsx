@@ -24,34 +24,34 @@ interface ResultDetailCardProps {
 export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onReset }) => {
   const statusTheme = {
     fresh: {
-      badge: 'bg-[#f0efc0] text-[#1e6238] border-[#c4cb38]',
-      border: 'border-[#c4cb38]',
-      headerBg: 'bg-gradient-to-br from-[#faf9ea] to-white',
-      icon: <CheckCircle2 className="w-7 h-7 text-[#1e6238] flex-shrink-0" />,
+      badge: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      border: 'border-emerald-200',
+      headerBg: 'bg-gradient-to-br from-emerald-50/50 to-white',
+      icon: <CheckCircle2 className="w-7 h-7 text-emerald-700 flex-shrink-0" />,
       tag: 'STATUS 1: SEGAR',
-      tagColor: 'text-[#1e6238]',
-      accentColor: 'text-[#1e6238]',
-      glowClass: 'shadow-[#c4cb38]/20',
+      tagColor: 'text-emerald-700',
+      accentColor: 'text-emerald-700',
+      glowClass: 'shadow-emerald-500/20',
     },
     warning: {
-      badge: 'bg-[#eaa2b2]/30 text-[#9f5472] border-[#eaa2b2]',
-      border: 'border-[#eaa2b2]',
-      headerBg: 'bg-gradient-to-br from-[#eaa2b2]/15 to-white',
-      icon: <AlertTriangle className="w-7 h-7 text-[#9f5472] flex-shrink-0" />,
+      badge: 'bg-amber-50 text-amber-700 border-amber-200',
+      border: 'border-amber-200',
+      headerBg: 'bg-gradient-to-br from-amber-50/50 to-white',
+      icon: <AlertTriangle className="w-7 h-7 text-amber-700 flex-shrink-0" />,
       tag: 'STATUS 2: WASPADA',
-      tagColor: 'text-[#9f5472]',
-      accentColor: 'text-[#9f5472]',
-      glowClass: 'shadow-[#eaa2b2]/20',
+      tagColor: 'text-amber-700',
+      accentColor: 'text-amber-700',
+      glowClass: 'shadow-amber-500/20',
     },
     spoiled: {
-      badge: 'bg-[#ba2c67]/20 text-[#ba2c67] border-[#ba2c67]',
-      border: 'border-[#ba2c67]',
-      headerBg: 'bg-gradient-to-br from-[#ba2c67]/10 to-white',
-      icon: <XCircle className="w-7 h-7 text-[#ba2c67] flex-shrink-0" />,
+      badge: 'bg-rose-50 text-rose-700 border-rose-200',
+      border: 'border-rose-200',
+      headerBg: 'bg-gradient-to-br from-rose-50/50 to-white',
+      icon: <XCircle className="w-7 h-7 text-rose-700 flex-shrink-0" />,
       tag: 'STATUS 3: BAHAYA',
-      tagColor: 'text-[#ba2c67]',
-      accentColor: 'text-[#ba2c67]',
-      glowClass: 'shadow-[#ba2c67]/20',
+      tagColor: 'text-rose-700',
+      accentColor: 'text-rose-700',
+      glowClass: 'shadow-rose-500/20',
     },
   }[result.status];
 
@@ -76,8 +76,8 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
           </span>
           <div className="flex items-center gap-1.5">
             {result.whiteCalibrated && (
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#f0efc0] text-[#1e6238] border border-[#c4cb38] flex items-center gap-1">
-                <Check className="w-3 h-3 text-[#70bc2c]" /> Kalibrasi
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1">
+                <Check className="w-3 h-3 text-emerald-600" /> Kalibrasi
               </span>
             )}
             <span className="text-[10px] font-mono text-slate-400">{result.timestamp}</span>
@@ -105,22 +105,22 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
         {/* 1. Parameter Grid */}
         <div>
           <h3 className="text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-            <Activity className="w-3.5 h-3.5 text-[#70bc2c]" />
+            <Activity className="w-3.5 h-3.5 text-emerald-600" />
             Parameter Sensor
           </h3>
 
           <div className="grid grid-cols-2 gap-2.5">
             
             {/* pH */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-[#faf9ea] border border-[#c4cb38]/30 space-y-2.5 shadow-sm">
+            <div className="p-3 sm:p-4 rounded-2xl bg-slate-50 border border-emerald-200/30 space-y-2.5 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] sm:text-xs font-bold text-slate-700 flex items-center gap-1">
-                  <Thermometer className="w-3.5 h-3.5 text-[#70bc2c]" /> pH Daging
+                  <Thermometer className="w-3.5 h-3.5 text-emerald-600" /> pH Daging
                 </span>
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                  result.phValue < 6.5 ? 'bg-[#f0efc0] text-[#1e6238]'
-                  : result.phValue < 7.5 ? 'bg-orange-50 text-orange-600'
-                  : 'bg-red-50 text-red-600'
+                  result.phValue < 6.5 ? 'bg-emerald-50 text-emerald-700'
+                  : result.phValue < 7.5 ? 'bg-amber-50 text-amber-700'
+                  : 'bg-rose-50 text-rose-700'
                 }`}>
                   {result.phValue < 6.5 ? 'Asam (Segar)' : result.phValue < 7.5 ? 'Netral' : 'Basa'}
                 </span>
@@ -130,7 +130,7 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
               </span>
               {/* Full-width gradient track, filled portion indicates where on the scale */}
               <div className="space-y-0.5">
-                <div className="h-2 w-full bg-gradient-to-r from-[#70bc2c] via-[#c4cb38] via-[#ea580c] to-[#ba2c67] rounded-full relative">
+                <div className="h-2 w-full bg-gradient-to-r from-[#059669] via-[#c4cb38] via-[#d97706] to-[#e11d48] rounded-full relative">
                   {/* Pointer dot */}
                   <div 
                     className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white border-2 border-slate-700 shadow-md transition-all"
@@ -144,15 +144,15 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
             </div>
 
             {/* TVB-N */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-[#faf9ea] border border-[#c4cb38]/30 space-y-2.5 shadow-sm">
+            <div className="p-3 sm:p-4 rounded-2xl bg-slate-50 border border-emerald-200/30 space-y-2.5 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] sm:text-xs font-bold text-slate-700 flex items-center gap-1">
-                  <Activity className="w-3.5 h-3.5 text-[#9f5472]" /> TVB-N
+                  <Activity className="w-3.5 h-3.5 text-amber-700" /> TVB-N
                 </span>
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                  result.tvbnValue < 15 ? 'bg-[#f0efc0] text-[#1e6238]'
-                  : result.tvbnValue < 25 ? 'bg-orange-50 text-orange-600'
-                  : 'bg-red-50 text-red-600'
+                  result.tvbnValue < 15 ? 'bg-emerald-50 text-emerald-700'
+                  : result.tvbnValue < 25 ? 'bg-amber-50 text-amber-700'
+                  : 'bg-rose-50 text-rose-700'
                 }`}>
                   {result.tvbnValue < 15 ? 'Aman' : result.tvbnValue < 25 ? 'Waspada' : 'Bahaya'}
                 </span>
@@ -167,7 +167,7 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
                     className="h-full rounded-full transition-all duration-500"
                     style={{ 
                       width: `${Math.min(100, Math.max(4, (result.tvbnValue / 40) * 100))}%`,
-                      background: result.tvbnValue < 15 ? '#70bc2c' : result.tvbnValue < 25 ? '#ea580c' : '#ba2c67'
+                      background: result.tvbnValue < 15 ? '#059669' : result.tvbnValue < 25 ? '#d97706' : '#e11d48'
                     }}
                   />
                 </div>
@@ -176,20 +176,20 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
             </div>
 
             {/* Freshness Index */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-[#faf9ea] border border-[#c4cb38]/30 space-y-2.5 shadow-sm">
+            <div className="p-3 sm:p-4 rounded-2xl bg-slate-50 border border-emerald-200/30 space-y-2.5 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] sm:text-xs font-bold text-slate-700 flex items-center gap-1">
-                  <Sparkles className="w-3.5 h-3.5 text-[#70bc2c]" /> Indeks
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-600" /> Indeks
                 </span>
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                  result.freshnessIndex >= 80 ? 'bg-[#f0efc0] text-[#1e6238]'
-                  : result.freshnessIndex >= 40 ? 'bg-orange-50 text-orange-600'
-                  : 'bg-red-50 text-red-600'
+                  result.freshnessIndex >= 80 ? 'bg-emerald-50 text-emerald-700'
+                  : result.freshnessIndex >= 40 ? 'bg-amber-50 text-amber-700'
+                  : 'bg-rose-50 text-rose-700'
                 }`}>
                   {result.freshnessIndex >= 80 ? 'Prima' : result.freshnessIndex >= 40 ? 'Segera' : 'Tidak Layak'}
                 </span>
               </div>
-              <span className="text-2xl sm:text-3xl font-black text-[#1e6238] font-mono block">
+              <span className="text-2xl sm:text-3xl font-black text-emerald-700 font-mono block">
                 {result.freshnessIndex}%
               </span>
               <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
@@ -197,18 +197,18 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
                   className="h-full rounded-full transition-all duration-700"
                   style={{ 
                     width: `${result.freshnessIndex}%`,
-                    background: result.freshnessIndex >= 80 ? '#70bc2c'
-                      : result.freshnessIndex >= 40 ? '#ea580c' : '#ba2c67'
+                    background: result.freshnessIndex >= 80 ? '#059669'
+                      : result.freshnessIndex >= 40 ? '#d97706' : '#e11d48'
                   }}
                 />
               </div>
             </div>
 
             {/* Shelf Life */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-[#faf9ea] border border-[#c4cb38]/30 space-y-2 shadow-sm">
+            <div className="p-3 sm:p-4 rounded-2xl bg-slate-50 border border-emerald-200/30 space-y-2 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] sm:text-xs font-bold text-slate-700 flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-[#1e6238]" /> Sisa Umur
+                  <Clock className="w-3.5 h-3.5 text-emerald-700" /> Sisa Umur
                 </span>
                 <span className="text-[10px] font-medium text-slate-500">Chiller 0–4°C</span>
               </div>
@@ -225,9 +225,9 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
         </div>
 
         {/* 2. Color Calibration */}
-        <div className="p-3.5 sm:p-4 rounded-2xl bg-[#faf9ea] border border-[#c4cb38]/30 space-y-3 shadow-sm">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-emerald-200/30 space-y-3 shadow-sm">
           <span className="text-[11px] font-bold text-slate-700 flex items-center gap-1.5">
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#70bc2c]" />
+            <SlidersHorizontal className="w-3.5 h-3.5 text-emerald-600" />
             Kalibrasi Spektrum Warna
           </span>
 
@@ -241,8 +241,8 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
               </div>
               <span className="text-slate-300 font-bold text-lg">→</span>
               <div className="text-center">
-                <span className="text-[9px] text-[#1e6238] font-bold block mb-1">Terkalibrasi</span>
-                <div className="w-9 h-9 rounded-full border-2 border-[#70bc2c] shadow-md mx-auto" style={{ backgroundColor: result.hex }} />
+                <span className="text-[9px] text-emerald-700 font-bold block mb-1">Terkalibrasi</span>
+                <div className="w-9 h-9 rounded-full border-2 border-[#059669] shadow-md mx-auto" style={{ backgroundColor: result.hex }} />
                 <span className="text-[10px] font-mono font-black text-slate-900 mt-1 block">{result.hex}</span>
               </div>
             </div>
@@ -254,7 +254,7 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
                 { label: 'a*', value: result.lab.a },
                 { label: 'b*', value: result.lab.b },
               ].map(({ label, value }) => (
-                <div key={label} className="text-center p-1.5 rounded-lg bg-[#faf9ea] border border-[#c4cb38]/20">
+                <div key={label} className="text-center p-1.5 rounded-lg bg-slate-50 border border-emerald-200/20">
                   <span className="text-[9px] text-slate-500 block font-sans">{label}</span>
                   <span className="font-bold text-slate-900 text-xs font-mono">{value}</span>
                 </div>
@@ -264,7 +264,7 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
 
           {/* Food safety warning */}
           {result.recommendations.foodSafetyWarning && (
-            <div className="p-3 rounded-xl bg-[#ba2c67]/10 border border-[#ba2c67]/40 text-[#ba2c67] text-[11px] font-semibold flex items-start gap-2">
+            <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-[11px] font-semibold flex items-start gap-2">
               <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
               <span>{result.recommendations.foodSafetyWarning}</span>
             </div>
@@ -274,28 +274,28 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
         {/* 3. Recommendations */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           
-          <div className="p-3.5 rounded-2xl bg-[#faf9ea] border border-[#c4cb38]/30 shadow-sm space-y-2">
+          <div className="p-3.5 rounded-2xl bg-slate-50 border border-emerald-200/30 shadow-sm space-y-2">
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-              <Utensils className="w-3.5 h-3.5 text-[#70bc2c]" /> Rekomendasi Kuliner
+              <Utensils className="w-3.5 h-3.5 text-emerald-600" /> Rekomendasi Kuliner
             </h4>
             <ul className="space-y-1.5">
               {result.recommendations.culinary.map((tip, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-[11px] sm:text-xs text-slate-700">
-                  <span className="text-[#70bc2c] font-bold mt-0.5 shrink-0">•</span>
+                  <span className="text-emerald-600 font-bold mt-0.5 shrink-0">•</span>
                   <span className="leading-relaxed">{tip}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-3.5 rounded-2xl bg-[#faf9ea] border border-[#c4cb38]/30 shadow-sm space-y-2">
+          <div className="p-3.5 rounded-2xl bg-slate-50 border border-emerald-200/30 shadow-sm space-y-2">
             <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#1e6238]" /> Langkah Penyimpanan
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" /> Langkah Penyimpanan
             </h4>
             <ul className="space-y-1.5">
               {result.recommendations.preventiveSteps.map((step, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-[11px] sm:text-xs text-slate-700">
-                  <span className="text-[#1e6238] font-bold mt-0.5 shrink-0">•</span>
+                  <span className="text-emerald-700 font-bold mt-0.5 shrink-0">•</span>
                   <span className="leading-relaxed">{step}</span>
                 </li>
               ))}
@@ -308,7 +308,7 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
         <div className="flex items-center justify-between pt-1 border-t border-slate-100">
           <button
             onClick={onReset}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#1e6238] hover:bg-[#174e2c] text-white text-xs font-bold shadow-md transition-all cursor-pointer active:scale-95"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md transition-all cursor-pointer active:scale-95"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             Pindai Baru

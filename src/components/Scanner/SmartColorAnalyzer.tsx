@@ -105,6 +105,16 @@ export const SmartColorAnalyzer: React.FC = () => {
     return () => { stopCamera(); };
   }, [activeTab, startCamera, stopCamera]);
 
+  // Make sure stream is attached to the video element once it is rendered
+  useEffect(() => {
+    if (isCameraActive && videoRef.current && streamRef.current) {
+      if (videoRef.current.srcObject !== streamRef.current) {
+        videoRef.current.srcObject = streamRef.current;
+      }
+      videoRef.current.play().catch(e => console.warn('Video play error:', e));
+    }
+  }, [isCameraActive]);
+
   // Live preview from center ROI
   useEffect(() => {
     if (!isCameraActive) return;

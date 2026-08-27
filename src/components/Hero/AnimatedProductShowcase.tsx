@@ -114,7 +114,7 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
                 {/* Product image */}
                 <div className="rounded-2xl overflow-hidden bg-[#faf9ea] border border-slate-200 shadow-inner">
                   <img 
-                    src="/assets/gent-packaging-ref.png" 
+                    src={`${import.meta.env.BASE_URL}assets/gent-packaging-ref.png`}
                     alt="Produk Kemasan Pintar GENT — Stiker Indikator Kesegaran Daging" 
                     className="w-full h-auto max-h-[320px] sm:max-h-[380px] object-cover"
                     onError={(e) => {
