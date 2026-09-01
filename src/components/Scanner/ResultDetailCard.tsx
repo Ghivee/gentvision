@@ -64,7 +64,7 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
     const statusColor = { fresh: '#2e7d32', warning: '#e65100', spoiled: '#c2185b' }[result.status];
     const fefoRec = getFefoRecommendation(result.status, userMode);
     const photoSection = result.capturedImageDataUrl
-      ? `<div class="photo-section"><div class="section-title">📷 Foto Jepretan Kamera</div><img src="${result.capturedImageDataUrl}" style="width:100%;max-height:240px;object-fit:cover;border-radius:10px;border:1px solid #f8bbd0;" alt="Foto scan"/></div>`
+      ? `<div class="photo-section"><div class="section-title">📷 Foto Jepretan Kamera</div><img src="${result.capturedImageDataUrl}" style="width:100%;height:auto;border-radius:10px;border:1px solid #f8bbd0;" alt="Foto scan"/></div>`
       : '';
     const win = window.open('', '_blank', 'width=750,height=1050');
     if (!win) return;

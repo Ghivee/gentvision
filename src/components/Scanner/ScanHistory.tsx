@@ -70,7 +70,7 @@ function handleDownloadPDF(result: ColorAnalysisResult, userMode: UserMode) {
   const photoSection = result.capturedImageDataUrl
     ? `<div class="photo-section">
         <div class="section-title">Foto Jepretan Kamera</div>
-        <img src="${result.capturedImageDataUrl}" style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;border:1px solid #f8bbd0;" alt="Foto scan"/>
+        <img src="${result.capturedImageDataUrl}" style="width:100%;height:auto;border-radius:12px;border:1px solid #f8bbd0;" alt="Foto scan"/>
       </div>`
     : '';
 
@@ -177,20 +177,20 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({
   return (
     <div className="max-w-6xl mx-auto space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
           <h2 className="text-xl sm:text-2xl font-extrabold" style={{ color: 'var(--color-primary-dark)' }}>
             Riwayat Pemindaian
           </h2>
           <span
-            className="text-xs font-black px-2.5 py-1 rounded-full"
+            className="text-xs font-black px-2.5 py-1 rounded-full whitespace-nowrap"
             style={{ background: 'var(--color-accent)', color: 'var(--color-primary)', borderColor: 'var(--color-accent-mid)' }}
           >
             {history.length} scan
           </span>
           <button
             onClick={() => setExpanded(e => !e)}
-            className="p-1.5 rounded-xl cursor-pointer transition-all"
+            className="p-1.5 rounded-xl cursor-pointer transition-all shrink-0"
             style={{ color: 'var(--color-text-muted)' }}
           >
             {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
