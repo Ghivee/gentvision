@@ -167,14 +167,22 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
       el.setAttribute('cy', String(cY));
       el.setAttribute('r', String(r));
     };
+    const setRect = (id: string, r: number) => {
+      const el = svg.getElementById(id) as SVGRectElement | null;
+      if (!el) return;
+      el.setAttribute('x', String(cX - r));
+      el.setAttribute('y', String(cY - r));
+      el.setAttribute('width', String(r * 2));
+      el.setAttribute('height', String(r * 2));
+    };
     const setText = (id: string, y: number) => {
       const el = svg.getElementById(id) as SVGTextElement | null;
       if (!el) return;
       el.setAttribute('x', String(cX));
       el.setAttribute('y', String(y));
     };
-    setCircle('mask-circle-outer', outerR);
-    setCircle('outline-outer', outerR);
+    setRect('mask-rect-outer', outerR);
+    setRect('outline-outer', outerR);
     setCircle('outline-inner', innerR);
     setText('text-outer', cY - outerR + 22);
     setText('text-inner', cY - innerR + 17);
@@ -263,7 +271,7 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
 
         if (dist2 <= innerR * innerR) {
           sensorPx.push(px);
-        } else if (dist2 <= outerR * outerR) {
+        } else if (Math.abs(absX) <= outerR && Math.abs(absY) <= outerR) {
           whitePx.push(px);
         }
       }
@@ -506,20 +514,21 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
               <defs>
                 <mask id="circle-mask">
                   <rect width="100%" height="100%" fill="white" />
-                  {/* Outer circle hole */}
-                  <circle id="mask-circle-outer" fill="black" />
+                  {/* Outer rect hole */}
+                  <rect id="mask-rect-outer" fill="black" rx="16" />
                 </mask>
               </defs>
 
-              {/* Dark overlay with circular hole */}
+              {/* Dark overlay with hole */}
               <rect width="100%" height="100%" fill="rgba(10,10,20,0.82)" mask="url(#circle-mask)" />
 
-              {/* Outer circle — area putih stiker (ring) */}
-              <circle
+              {/* Outer rect — area putih stiker */}
+              <rect
                 id="outline-outer"
                 fill="none"
                 stroke="rgba(255,255,255,0.90)"
                 strokeWidth="2.5"
+                rx="16"
               />
 
               {/* Inner circle — sensor warna (dashed pink) */}
@@ -607,7 +616,7 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
             </button>
 
             <p className="text-center text-[10px] text-white/50 max-w-xs">
-              Stiker melingkar GENT di lingkaran merah muda, area putih di cincin luar putih
+              Sensor melingkar GENT di lingkaran merah muda, area putih di kotak luar
             </p>
           </div>
         </div>
@@ -689,7 +698,7 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
                   <div className="relative">
                     {/* Outer ring (area putih) */}
                     <div
-                      className="w-48 h-48 rounded-full flex items-center justify-center border-4"
+                      className="w-48 h-48 rounded-[24px] flex items-center justify-center border-4"
                       style={{ border: '4px solid rgba(255,255,255,0.5)', background: 'var(--color-accent)' }}
                     >
                       {/* Label outer */}
@@ -722,11 +731,11 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
 
                   <div className="text-center space-y-1.5 px-4">
                     <p className="font-bold text-sm" style={{ color: 'var(--color-primary-dark)' }}>
-                      Sejajarkan Stiker Melingkar GENT
+                      Sejajarkan Stiker GENT
                     </p>
                     <p className="text-xs leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>
                       Sensor kurkumin (bulat kuning) masuk ke lingkaran merah muda.
-                      Area putih stiker masuk ke cincin putih luar.
+                      Area putih stiker masuk ke garis kotak luar.
                     </p>
                   </div>
                 </div>

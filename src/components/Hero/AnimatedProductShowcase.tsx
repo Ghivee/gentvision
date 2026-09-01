@@ -52,41 +52,52 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
             </p>
 
             {/* Mode Toggle */}
-            <div className="space-y-2">
-              <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--color-text-muted)' }}>
-                Pilih Mode Pengguna
+            <div className="space-y-3">
+              <p className="text-[11px] font-extrabold uppercase tracking-widest flex items-center gap-2" style={{ color: 'var(--color-text-muted)' }}>
+                <span>Pilih Mode Pengguna</span>
+                <span className="flex-1 h-px bg-slate-200"></span>
               </p>
               <div
-                className="inline-flex rounded-2xl p-1 border gap-1"
+                className="inline-flex rounded-2xl p-1.5 border shadow-inner"
                 style={{ background: 'var(--color-accent)', borderColor: 'var(--color-accent-mid)' }}
               >
                 <button
                   onClick={() => onModeChange('retail')}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                  className="relative flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs font-extrabold transition-all duration-300 cursor-pointer overflow-hidden"
                   style={userMode === 'retail'
-                    ? { background: 'var(--color-primary)', color: 'white', boxShadow: '0 4px 12px rgba(194,24,91,0.25)' }
-                    : { color: 'var(--color-text-muted)' }
+                    ? { background: 'var(--color-primary)', color: 'white', boxShadow: '0 6px 16px rgba(194,24,91,0.35)' }
+                    : { color: 'var(--color-text-muted)', background: 'transparent' }
                   }
                 >
-                  <Store className="w-3.5 h-3.5" />
+                  {userMode === 'retail' && <div className="absolute inset-0 border-2 border-white/20 rounded-xl pointer-events-none"></div>}
+                  <Store className={`w-4 h-4 ${userMode === 'retail' ? 'scale-110' : 'opacity-60'}`} />
                   Retail / Toko
+                  {userMode === 'retail' && <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full shadow-sm"></div>}
                 </button>
                 <button
                   onClick={() => onModeChange('consumer')}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                  className="relative flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs font-extrabold transition-all duration-300 cursor-pointer overflow-hidden"
                   style={userMode === 'consumer'
-                    ? { background: 'var(--color-primary)', color: 'white', boxShadow: '0 4px 12px rgba(194,24,91,0.25)' }
-                    : { color: 'var(--color-text-muted)' }
+                    ? { background: 'var(--color-primary)', color: 'white', boxShadow: '0 6px 16px rgba(194,24,91,0.35)' }
+                    : { color: 'var(--color-text-muted)', background: 'transparent' }
                   }
                 >
-                  <User className="w-3.5 h-3.5" />
+                  {userMode === 'consumer' && <div className="absolute inset-0 border-2 border-white/20 rounded-xl pointer-events-none"></div>}
+                  <User className={`w-4 h-4 ${userMode === 'consumer' ? 'scale-110' : 'opacity-60'}`} />
                   Konsumen
+                  {userMode === 'consumer' && <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full shadow-sm"></div>}
                 </button>
               </div>
-              <p className="text-[11px] leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>
+              <p className="text-[11.5px] leading-relaxed font-medium p-3 rounded-xl border flex items-start gap-2" 
+                style={{ 
+                  color: userMode === 'retail' ? 'var(--color-primary-dark)' : '#333', 
+                  background: 'white', 
+                  borderColor: 'var(--color-accent-mid)' 
+                }}
+              >
                 {userMode === 'retail'
-                  ? '🏪 Rekomendasi untuk pengelola toko & retail daging'
-                  : '🏠 Rekomendasi untuk konsumen & rumah tangga'}
+                  ? <><span>🏪</span> <span>Mode Retail memberikan rekomendasi operasional untuk <strong>toko daging & supermarket</strong>.</span></>
+                  : <><span>🏠</span> <span>Mode Konsumen memberikan panduan penyimpanan & konsumsi untuk <strong>rumah tangga</strong>.</span></>}
               </p>
             </div>
 
