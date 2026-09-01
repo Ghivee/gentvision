@@ -1,4 +1,4 @@
-﻿export type FreshnessStatus = 'fresh' | 'warning' | 'spoiled';
+export type FreshnessStatus = 'fresh' | 'warning' | 'spoiled';
 
 export interface ColorRGB {
   r: number;
@@ -40,7 +40,16 @@ export interface ColorAnalysisResult {
   };
   sampleType: 'beef' | 'chicken' | 'fish' | 'pork' | 'custom';
   confidenceScore: number;
+  /** Mode pengguna saat scan dilakukan */
+  userMode?: 'retail' | 'consumer';
+  /** Data URL foto jepretan kamera saat scan (base64 JPEG) */
+  capturedImageDataUrl?: string;
+  /** Label jenis daging yang ditampilkan */
+  meatLabel?: string;
 }
+
+export type UserMode = 'retail' | 'consumer';
+
 
 export interface MeatBatch {
   id: string;

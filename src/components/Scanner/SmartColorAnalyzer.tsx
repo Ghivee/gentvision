@@ -11,7 +11,7 @@ import {
   X,
   Zap,
 } from 'lucide-react';
-import { ColorRGB, ColorAnalysisResult } from '../../types';
+import { ColorRGB, ColorAnalysisResult, UserMode } from '../../types';
 import {
   analyzeSensorColor,
   rgbToHex,
@@ -40,7 +40,19 @@ interface CircleParams {
   wrapW: number; wrapH: number;
 }
 
-export const SmartColorAnalyzer: React.FC = () => {
+const MEAT_LABELS: Record<string, string> = {
+  beef: 'Daging Sapi',
+  chicken: 'Daging Ayam',
+  fish: 'Ikan / Seafood',
+  pork: 'Lainnya',
+};
+
+interface SmartColorAnalyzerProps {
+  userMode: UserMode;
+  onScanComplete: (result: ColorAnalysisResult) => void;
+}
+
+export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode, onScanComplete }) => {
   const [activeTab, setActiveTab] = useState<'camera' | 'upload' | 'preset'>('camera');
   const [selectedMeatType, setSelectedMeatType] = useState<'beef' | 'chicken' | 'fish' | 'pork' | 'custom'>('beef');
 
@@ -78,6 +90,8 @@ export const SmartColorAnalyzer: React.FC = () => {
   const [toastMsg, setToastMsg] = useState<string | null>(null);
 
   const resultRef = useRef<HTMLDivElement | null>(null);
+  /** Foto jepretan kamera terakhir saat scan (data URL) */
+  const capturedPhotoRef = useRef<string | null>(null);
 
   // ── Toast ────────────────────────────────────────────────────────────────
   const showToast = (msg: string) => {
@@ -275,10 +289,29 @@ export const SmartColorAnalyzer: React.FC = () => {
     setIsAnalyzing(true);
     setAnalyzeProgress(0);
     frameBufferRef.current = [];
+    capturedPhotoRef.current = null;
 
     setShowCaptureFlash(true);
     setTimeout(() => setShowCaptureFlash(false), 350);
     if ('vibrate' in navigator) navigator.vibrate(40);
+
+    // Capture foto jepretan langsung dari video feed saat tombol ditekan
+    try {
+      const video = videoRef.current;
+      const { wrapW, wrapH } = circleParams;
+      if (video && video.videoWidth) {
+        const snapCanvas = document.createElement('canvas');
+        const vW = video.videoWidth, vH = video.videoHeight;
+        const scale = Math.max(wrapW / vW, wrapH / vH);
+        snapCanvas.width = Math.round(vW * scale);
+        snapCanvas.height = Math.round(vH * scale);
+        const sCtx = snapCanvas.getContext('2d');
+        if (sCtx) {
+          sCtx.drawImage(video, 0, 0, snapCanvas.width, snapCanvas.height);
+          capturedPhotoRef.current = snapCanvas.toDataURL('image/jpeg', 0.82);
+        }
+      }
+    } catch { /* ignore */ }
 
     let count = 0;
     captureIntervalRef.current = setInterval(() => {
@@ -339,11 +372,20 @@ export const SmartColorAnalyzer: React.FC = () => {
     }
 
     const result = analyzeSensorColor(avgSensor, selectedMeatType, avgWhite);
+    // Attach extra metadata
+    const enrichedResult: ColorAnalysisResult = {
+      ...result,
+      userMode,
+      meatLabel: MEAT_LABELS[selectedMeatType] || selectedMeatType,
+      capturedImageDataUrl: capturedPhotoRef.current ?? undefined,
+    };
     setWhiteRefColor(avgWhite);
-    setAnalysisResult(result);
+    setAnalysisResult(enrichedResult);
+    onScanComplete(enrichedResult);
     setIsAnalyzing(false);
     setAnalyzeProgress(0);
     frameBufferRef.current = [];
+    capturedPhotoRef.current = null;
     closeCameraView();
     setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
   };
@@ -782,7 +824,13 @@ export const SmartColorAnalyzer: React.FC = () => {
                     <button key={preset.id}
                       onClick={() => {
                         setSelectedMeatType(preset.meatType);
-                        setAnalysisResult(analyzeSensorColor(preset.rgb, preset.meatType));
+                        const presetResult: ColorAnalysisResult = {
+                          ...analyzeSensorColor(preset.rgb, preset.meatType),
+                          userMode,
+                          meatLabel: MEAT_LABELS[preset.meatType] || preset.meatType,
+                        };
+                        setAnalysisResult(presetResult);
+                        onScanComplete(presetResult);
                         setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
                       }}
                       className="w-full p-4 rounded-2xl border text-left cursor-pointer group transition-all hover:shadow-md bg-white"
@@ -817,6 +865,7 @@ export const SmartColorAnalyzer: React.FC = () => {
               <div className="animate-fadeInUp">
                 <ResultDetailCard
                   result={analysisResult}
+                  userMode={userMode}
                   onReset={() => { setAnalysisResult(null); setUploadedImageSrc(null); }}
                 />
               </div>

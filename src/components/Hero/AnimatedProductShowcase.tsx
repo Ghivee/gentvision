@@ -1,11 +1,18 @@
 import React from 'react';
-import { Eye, ChevronRight } from 'lucide-react';
+import { Eye, ChevronRight, Store, User } from 'lucide-react';
+import { UserMode } from '../../types';
 
 interface AnimatedProductShowcaseProps {
   onScanClick: () => void;
+  userMode: UserMode;
+  onModeChange: (mode: UserMode) => void;
 }
 
-export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = ({ onScanClick }) => {
+export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = ({
+  onScanClick,
+  userMode,
+  onModeChange,
+}) => {
   return (
     <div
       className="relative overflow-hidden pt-10 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 border-b"
@@ -44,6 +51,45 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
               hasil akurat di semua kondisi pencahayaan.
             </p>
 
+            {/* Mode Toggle */}
+            <div className="space-y-2">
+              <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--color-text-muted)' }}>
+                Pilih Mode Pengguna
+              </p>
+              <div
+                className="inline-flex rounded-2xl p-1 border gap-1"
+                style={{ background: 'var(--color-accent)', borderColor: 'var(--color-accent-mid)' }}
+              >
+                <button
+                  onClick={() => onModeChange('retail')}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                  style={userMode === 'retail'
+                    ? { background: 'var(--color-primary)', color: 'white', boxShadow: '0 4px 12px rgba(194,24,91,0.25)' }
+                    : { color: 'var(--color-text-muted)' }
+                  }
+                >
+                  <Store className="w-3.5 h-3.5" />
+                  Retail / Toko
+                </button>
+                <button
+                  onClick={() => onModeChange('consumer')}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer"
+                  style={userMode === 'consumer'
+                    ? { background: 'var(--color-primary)', color: 'white', boxShadow: '0 4px 12px rgba(194,24,91,0.25)' }
+                    : { color: 'var(--color-text-muted)' }
+                  }
+                >
+                  <User className="w-3.5 h-3.5" />
+                  Konsumen
+                </button>
+              </div>
+              <p className="text-[11px] leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>
+                {userMode === 'retail'
+                  ? '🏪 Rekomendasi untuk pengelola toko & retail daging'
+                  : '🏠 Rekomendasi untuk konsumen & rumah tangga'}
+              </p>
+            </div>
+
             <button
               onClick={onScanClick}
               className="w-full sm:w-auto px-8 py-4 rounded-2xl text-white font-extrabold text-sm sm:text-base transition-all flex items-center justify-center gap-3 cursor-pointer active:scale-[0.98]"
@@ -58,7 +104,7 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
             </button>
           </div>
 
-          {/* Right Column: Product Image — clean, no header/footer labels */}
+          {/* Right Column: Product Image */}
           <div className="lg:col-span-6 flex justify-center">
             <div className="relative w-full max-w-sm sm:max-w-md">
               <div

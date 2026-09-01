@@ -11,15 +11,19 @@ import {
   Printer,
   RefreshCw,
   SlidersHorizontal,
+  Store,
+  User,
 } from 'lucide-react';
-import { ColorAnalysisResult } from '../../types';
+import { ColorAnalysisResult, UserMode } from '../../types';
+import { getFefoRecommendation } from './fefoRecommendations';
 
 interface ResultDetailCardProps {
   result: ColorAnalysisResult;
   onReset: () => void;
+  userMode?: UserMode;
 }
 
-export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onReset }) => {
+export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onReset, userMode = 'retail' }) => {
   const theme = {
     fresh: {
       border: '#a5d6a7',
@@ -53,67 +57,83 @@ export const ResultDetailCard: React.FC<ResultDetailCardProps> = ({ result, onRe
     },
   }[result.status];
 
+  const fefoRecs = getFefoRecommendation(result.status, userMode);
+
   const handlePrintPDF = () => {
     const statusLabel = { fresh: 'SEGAR ✓', warning: 'WASPADA ⚠', spoiled: 'BAHAYA ✗' }[result.status];
     const statusColor = { fresh: '#2e7d32', warning: '#e65100', spoiled: '#c2185b' }[result.status];
-    const win = window.open('', '_blank', 'width=700,height=900');
+    const fefoRec = getFefoRecommendation(result.status, userMode);
+    const photoSection = result.capturedImageDataUrl
+      ? `<div class="photo-section"><div class="section-title">📷 Foto Jepretan Kamera</div><img src="${result.capturedImageDataUrl}" style="width:100%;max-height:240px;object-fit:cover;border-radius:10px;border:1px solid #f8bbd0;" alt="Foto scan"/></div>`
+      : '';
+    const win = window.open('', '_blank', 'width=750,height=1050');
     if (!win) return;
-    win.document.write(`
+win.document.write(`
 <!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"/>
-<title>Laporan GENT-Vision — ${result.id}</title>
+<title>Laporan GENT-Vision \u2014 ${result.id}</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; padding: 40px; }
-  .header { display:flex; align-items:center; justify-content:space-between; border-bottom: 2px solid #f48fb1; padding-bottom:16px; margin-bottom:24px; }
-  .brand { font-size:22px; font-weight:900; color:#880e4f; }
+  body { font-family: 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; padding: 36px; }
+  .header { display:flex; align-items:center; justify-content:space-between; border-bottom: 2.5px solid #f48fb1; padding-bottom:14px; margin-bottom:22px; }
+  .brand { font-size:20px; font-weight:900; color:#880e4f; }
   .brand span { color:#c2185b; }
-  .id { font-size:11px; color:#999; font-family:monospace; }
-  .status-badge { display:inline-block; padding:8px 20px; border-radius:999px; font-weight:900; font-size:14px; color:${statusColor}; background:${statusColor}18; border:2px solid ${statusColor}40; margin-bottom:16px; }
-  h2 { font-size:18px; font-weight:800; margin-bottom:6px; color:#3e0020; }
-  .msg { font-size:12px; color:#7d3453; margin-bottom:24px; line-height:1.6; }
-  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
-  .card { background:#fff8fb; border:1px solid #f8bbd0; border-radius:12px; padding:14px; }
-  .card-label { font-size:10px; font-weight:700; color:#7d3453; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px; }
-  .card-value { font-size:28px; font-weight:900; color:#3e0020; font-family:monospace; }
+  .id { font-size:10px; color:#aaa; font-family:monospace; }
+  .status-badge { display:inline-block; padding:8px 18px; border-radius:999px; font-weight:900; font-size:13px; color:${statusColor}; background:${statusColor}18; border:2px solid ${statusColor}40; margin-bottom:14px; }
+  h2 { font-size:17px; font-weight:800; margin-bottom:5px; color:#3e0020; }
+  .msg { font-size:12px; color:#7d3453; margin-bottom:18px; line-height:1.6; }
+  .fefo-box { background:${statusColor}10; border:1.5px solid ${statusColor}40; border-radius:12px; padding:12px 16px; margin-bottom:18px; }
+  .fefo-title { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:${statusColor}; margin-bottom:8px; }
+  .fefo-rec { font-size:12px; font-weight:600; color:#1a1a1a; padding:5px 0; border-bottom:1px dashed ${statusColor}30; }
+  .fefo-rec:last-child { border-bottom:none; }
+  .photo-section { margin-bottom:18px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
+  .card { background:#fff8fb; border:1px solid #f8bbd0; border-radius:10px; padding:12px; }
+  .card-label { font-size:9.5px; font-weight:700; color:#7d3453; text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px; }
+  .card-value { font-size:26px; font-weight:900; color:#3e0020; font-family:monospace; }
   .card-unit { font-size:11px; color:#999; }
-  .bar-track { height:6px; background:#f8bbd0; border-radius:3px; margin-top:8px; overflow:hidden; }
-  .section-title { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:#c2185b; margin:20px 0 8px; }
+  .bar-track { height:5px; background:#f8bbd0; border-radius:3px; margin-top:6px; overflow:hidden; }
+  .section-title { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:#c2185b; margin:16px 0 8px; }
   .colors { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
   .swatch { width:40px; height:40px; border-radius:50%; border:2px solid #eee; }
-  .swatch-label { font-size:10px; color:#999; }
-  .swatch-hex { font-size:11px; font-family:monospace; font-weight:700; color:#3e0020; }
+  .swatch-label { font-size:9.5px; color:#999; }
+  .swatch-hex { font-size:10.5px; font-family:monospace; font-weight:700; color:#3e0020; }
   ul { padding-left:16px; }
-  ul li { font-size:12px; color:#555; margin-bottom:4px; line-height:1.5; }
-  .footer { margin-top:32px; padding-top:16px; border-top:1px solid #f8bbd0; display:flex; justify-content:space-between; font-size:10px; color:#bbb; }
-  .warning-box { background:#fff0f0; border:1px solid #f48fb1; border-radius:10px; padding:12px; font-size:11px; color:#c2185b; font-weight:600; margin-top:12px; }
+  ul li { font-size:11.5px; color:#555; margin-bottom:3.5px; line-height:1.5; }
+  .footer { margin-top:28px; padding-top:14px; border-top:1px solid #f8bbd0; display:flex; justify-content:space-between; font-size:9.5px; color:#ccc; }
+  .warning-box { background:#fff0f0; border:1px solid #f48fb1; border-radius:8px; padding:10px; font-size:11px; color:#c2185b; font-weight:600; margin-top:10px; }
   @media print { body{padding:20px} }
 </style></head><body>
 <div class="header">
-  <div class="brand">GENT<span>-Vision</span> <span style="font-size:13px;font-weight:400;color:#999">Laporan Analisis Kolorimetri</span></div>
-  <div class="id">${result.id} · ${result.timestamp}</div>
+  <div class="brand">GENT<span>-Vision</span> <span style="font-size:12px;font-weight:400;color:#aaa">Laporan Analisis Kolorimetri</span></div>
+  <div class="id">${result.id} \u00b7 ${result.timestamp}<br/>Mode: ${userMode === 'retail' ? 'Retail / Toko' : 'Konsumen'}</div>
 </div>
 <div class="status-badge">${statusLabel}</div>
 <h2>${result.statusTitle}</h2>
 <p class="msg">${result.statusMessage}</p>
+<div class="fefo-box">
+  <div class="fefo-title">${userMode === 'retail' ? '\ud83c\udfe3 Rekomendasi Retail / Toko' : '\ud83c\udfe0 Rekomendasi Konsumen'}</div>
+  ${fefoRec.map(r => `<div class="fefo-rec">\u2022 ${r}</div>`).join('')}
+</div>
+${photoSection}
 <div class="grid">
-  <div class="card"><div class="card-label">pH Daging</div><div class="card-value">${result.phValue}<span class="card-unit" style="font-size:14px"></span></div><div class="bar-track"><div style="height:100%;width:${Math.min(100,(result.phValue-5)/4*100)}%;background:${statusColor};border-radius:3px"></div></div></div>
+  <div class="card"><div class="card-label">pH Daging</div><div class="card-value">${result.phValue}<span class="card-unit"></span></div><div class="bar-track"><div style="height:100%;width:${Math.min(100,(result.phValue-5)/4*100)}%;background:${statusColor};border-radius:3px"></div></div></div>
   <div class="card"><div class="card-label">TVB-N</div><div class="card-value">${result.tvbnValue}<span class="card-unit"> mg/100g</span></div><div class="bar-track"><div style="height:100%;width:${Math.min(100,result.tvbnValue/40*100)}%;background:${statusColor};border-radius:3px"></div></div></div>
   <div class="card"><div class="card-label">Indeks Kesegaran</div><div class="card-value" style="color:${statusColor}">${result.freshnessIndex}%</div><div class="bar-track"><div style="height:100%;width:${result.freshnessIndex}%;background:${statusColor};border-radius:3px"></div></div></div>
-  <div class="card"><div class="card-label">Sisa Umur Simpan</div><div class="card-value">~${result.remainingShelfHours}<span class="card-unit" style="font-size:14px"> Jam</span></div></div>
+  <div class="card"><div class="card-label">Sisa Umur Simpan</div><div class="card-value">~${result.remainingShelfHours}<span class="card-unit" style="font-size:13px"> Jam</span></div></div>
 </div>
-<p class="section-title">Kalibrasi Spektrum (Von Kries)</p>
+<div class="section-title">Kalibrasi Spektrum (Von Kries)</div>
 <div class="colors">
   <div><div class="swatch" style="background:${result.rawHex}"></div><div class="swatch-label">Raw</div><div class="swatch-hex">${result.rawHex}</div></div>
-  <div style="font-size:18px;color:#ccc">→</div>
+  <div style="font-size:18px;color:#ccc">\u2192</div>
   <div><div class="swatch" style="background:${result.hex}"></div><div class="swatch-label">Kalibrasi</div><div class="swatch-hex">${result.hex}</div></div>
-  <div style="margin-left:12px"><div class="swatch-label">CIE L*a*b*</div><div class="swatch-hex">L:${result.lab.L} · a:${result.lab.a} · b:${result.lab.b}</div><div class="swatch-label" style="margin-top:4px">Kepercayaan: ${result.confidenceScore}%</div></div>
+  <div style="margin-left:10px"><div class="swatch-label">CIE L*a*b*</div><div class="swatch-hex">L:${result.lab.L} \u00b7 a:${result.lab.a} \u00b7 b:${result.lab.b}</div><div class="swatch-label" style="margin-top:4px">Kepercayaan: ${result.confidenceScore}%</div></div>
 </div>
-<p class="section-title">Rekomendasi Kuliner</p>
+<div class="section-title">Rekomendasi Kuliner</div>
 <ul>${result.recommendations.culinary.map(t=>`<li>${t}</li>`).join('')}</ul>
-<p class="section-title">Langkah Penyimpanan</p>
+<div class="section-title">Langkah Penyimpanan</div>
 <ul>${result.recommendations.preventiveSteps.map(s=>`<li>${s}</li>`).join('')}</ul>
-${result.recommendations.foodSafetyWarning ? `<div class="warning-box">⚠ ${result.recommendations.foodSafetyWarning}</div>` : ''}
-<div class="footer"><span>© 2026 GENT-Vision Platform</span><span>Dicetak: ${new Date().toLocaleString('id-ID')}</span></div>
+${result.recommendations.foodSafetyWarning ? `<div class="warning-box">\u26a0 ${result.recommendations.foodSafetyWarning}</div>` : ''}
+<div class="footer"><span>\u00a9 2026 GENT-Vision Platform</span><span>Dicetak: ${new Date().toLocaleString('id-ID')}</span></div>
 </body></html>`);
     win.document.close();
     setTimeout(() => win.print(), 400);
@@ -371,6 +391,31 @@ ${result.recommendations.foodSafetyWarning ? `<div class="warning-box">⚠ ${res
               <span>{result.recommendations.foodSafetyWarning}</span>
             </div>
           )}
+        </div>
+
+        {/* FEFO Recommendation (Mode-based) */}
+        <div
+          className="p-3.5 rounded-2xl border space-y-2.5"
+          style={{ background: theme.headerBg, borderColor: theme.border }}
+        >
+          <h4 className="text-[11px] font-black uppercase tracking-wider flex items-center gap-1.5"
+            style={{ color: theme.accentColor }}
+          >
+            {userMode === 'retail'
+              ? <><Store className="w-3.5 h-3.5" /> Rekomendasi Retail</>             
+              : <><User className="w-3.5 h-3.5" /> Rekomendasi Konsumen</>
+            }
+          </h4>
+          <ul className="space-y-1.5">
+            {fefoRecs.map((rec, i) => (
+              <li key={i} className="flex items-start gap-2 text-[11px] sm:text-xs"
+                style={{ color: 'var(--color-text-muted)' }}
+              >
+                <span className="font-bold mt-0.5 shrink-0" style={{ color: theme.accentColor }}>•</span>
+                <span className="leading-relaxed font-medium" style={{ color: '#333' }}>{rec}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Recommendations */}
