@@ -70,7 +70,7 @@ function handleDownloadPDF(result: ColorAnalysisResult, userMode: UserMode) {
   const photoSection = result.capturedImageDataUrl
     ? `<div class="photo-section">
         <div class="section-title">Foto Jepretan Kamera</div>
-        <img src="${result.capturedImageDataUrl}" style="width:100%;height:auto;border-radius:12px;border:1px solid #f8bbd0;" alt="Foto scan"/>
+        <img src="${result.capturedImageDataUrl}" style="max-width:100%;max-height:160px;object-fit:contain;display:block;margin:0 auto;border-radius:8px;border:1px solid #f8bbd0;background:#fff8fb;" alt="Foto scan"/>
       </div>`
     : '';
 
