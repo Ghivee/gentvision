@@ -62,7 +62,7 @@ export const AnimatedProductShowcase: React.FC<AnimatedProductShowcaseProps> = (
                 }}
               >
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/foto%20contoh.webp`}
+                  src={`${import.meta.env.BASE_URL}assets/foto.webp`}
                   alt="Kemasan daging GENT dengan stiker indikator kurkumin-DES"
                   className="w-full h-auto object-cover"
                   onError={(e) => {
