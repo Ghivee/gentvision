@@ -183,7 +183,7 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
     };
     setRect('mask-rect-outer', outerR);
     setRect('outline-outer', outerR);
-    setCircle('outline-inner', innerR);
+    setRect('outline-inner', innerR);
     setText('text-outer', cY - outerR + 22);
     setText('text-inner', cY - innerR + 17);
   }, []);
@@ -531,13 +531,14 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
                 rx="16"
               />
 
-              {/* Inner circle — sensor warna (dashed pink) */}
-              <circle
+              {/* Inner rect — sensor warna (dashed pink) */}
+              <rect
                 id="outline-inner"
                 fill="none"
                 stroke="#f48fb1"
                 strokeWidth="2.5"
                 strokeDasharray="9 5"
+                rx="12"
               />
 
               {/* Label atas: area putih */}
@@ -616,7 +617,7 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
             </button>
 
             <p className="text-center text-[10px] text-white/50 max-w-xs">
-              Sensor melingkar GENT di lingkaran merah muda, area putih di kotak luar
+              Sensor GENT di kotak merah muda bagian dalam, area putih di kotak luar
             </p>
           </div>
         </div>
@@ -709,9 +710,9 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
                         Area Putih
                       </span>
 
-                      {/* Inner circle (sensor) */}
+                      {/* Inner square (sensor) */}
                       <div
-                        className="w-20 h-20 rounded-full flex items-center justify-center border-2 border-dashed"
+                        className="w-20 h-20 rounded-xl flex items-center justify-center border-2 border-dashed"
                         style={{
                           borderColor: 'var(--color-secondary)',
                           background: 'white',
@@ -734,7 +735,7 @@ export const SmartColorAnalyzer: React.FC<SmartColorAnalyzerProps> = ({ userMode
                       Sejajarkan Stiker GENT
                     </p>
                     <p className="text-xs leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>
-                      Sensor kurkumin (bulat kuning) masuk ke lingkaran merah muda.
+                      Sensor kurkumin (kuning) masuk ke kotak merah muda.
                       Area putih stiker masuk ke garis kotak luar.
                     </p>
                   </div>
