@@ -1,32 +1,35 @@
-# React + TypeScript + Vite
+# GENT-Vision
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A browser scanner for the colour of GENT smart-packaging stickers. The sticker is a colorimetric indicator based on curcumin in a deep eutectic solvent (DES) and rice straw biomass, developed with UGM Technology. GENT-Vision reads the sticker through the camera, converts the colour to CIE Lab and reports the result.
 
-Currently, two official plugins are available:
+[Bahasa Indonesia](README.id.md)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What it does
 
-## React Compiler
+- Camera capture inside a square stencil, and colour analysis in `src/core/colorimetry.ts` (sRGB to linear RGB, XYZ and CIE Lab).
+- Two modes, retail and consumer, with storage recommendations following the FEFO principle (first expired, first out).
+- A scan history kept in the browser (`localStorage`).
+- A PDF report that embeds the captured photo.
+- A product showcase landing section.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the Oxlint configuration
+React, TypeScript, Vite, Chart.js, `clsx` and `tailwind-merge`, Lucide icons, Oxlint. Deployed to GitHub Pages (`.github/workflows/deploy.yml`) and Vercel (`vercel.json`).
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Getting started
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
+npm run build
+npm run lint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Project structure
+
+```
+src/core/colorimetry.ts       colour space conversion
+src/components/Scanner/       camera analysis, result card, scan history, FEFO recommendations
+src/components/Hero/          product showcase
+src/data/sampleData.ts        sample data
+```
